@@ -1,0 +1,223 @@
+:root {
+  --DQ_Color: #005FAF;
+}
+
+.label-list {
+  font-family: Arial, sans-serif;
+  width: 1000px;          
+  margin: 0 auto;      
+}
+
+table {
+  font-size: 13px;
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 10px;
+  border: 1px solid #ddd;
+  text-align: left;
+}
+
+table button {
+  padding: 5px 10px;
+  background-color: var(--DQ_Color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: var(--DQ_Color);
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 17px;
+
+}
+
+.modal-content {
+  margin-bottom: 75px;
+  padding: 50px;
+  background: #fff;
+  border-radius: 5px;
+}
+
+
+.tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.tabs button {
+  padding: 5px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.tabs .active {
+  border-bottom: 2px solid var(--DQ_Color);
+  background-color: #e9ecef;
+  font-weight: bold;
+}
+
+.readonly-input {
+  background-color: #e9ecef;
+  color: #6c757d;
+  border: none;
+}
+
+.tab-content label {
+  display: block;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.tab-content input {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.modal-actions button {
+  padding: 5px 10px;
+  background-color: var(--DQ_Color);
+  color: white;
+}
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+}
+
+.pagination button {
+  padding: 5px 10px;
+  border: 1px solid #ccc;
+  background: #f9f9f9;
+  cursor: pointer;
+  font-size: 12px;
+}
+
+.pagination button.active {
+  background-color: var(--DQ_Color);
+  color: white;
+  border: 1px solid var(--DQ_Color);
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.pagination span {
+  padding: 5px 10px;
+  color: #777;
+}
+
+
+.add-label-button{
+  width: 80px;
+  height: 35px;
+  font-size: 14px;
+  padding: 0px;
+  background-color: var(--DQ_Color);
+  border: 0px;
+  border-radius: 5px;
+  color: white;
+}
+
+.label-list .header-controls {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.search-input {
+  padding: 5px;
+  height: 20px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  width: 200px; 
+}
+
+
+.add-modal-content {
+padding: 30px;
+background: #fff;
+border-radius: 8px;
+width: 400px; 
+box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.add-modal-body {
+display: flex;
+flex-direction: column;
+gap: 15px; 
+}
+
+.add-modal-body label {
+font-weight: bold;
+margin-bottom: 5px;
+}
+
+.add-modal-body input[type="text"] {
+width: 100%;
+padding: 8px;
+border: 1px solid #ccc;
+border-radius: 4px;
+}
+
+.modal-actions {
+display: flex;
+justify-content: space-between; 
+gap: 10px;
+margin-top: 20px;
+}
+
+.modal-actions button {
+padding: 8px 20px;
+background-color: var(--DQ_Color);
+color: white;
+border: none;
+border-radius: 4px;
+cursor: pointer;
+transition: background-color 0.3s;
+}
+
+.modal-actions button:hover {
+background-color: var(--DQ_Color);
+}
+
+
+.action-column{
+display: flex;
+gap: 10px;
+
+}

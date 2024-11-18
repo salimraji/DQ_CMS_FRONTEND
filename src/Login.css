@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+
+
+html, body {
+    margin: 0px;
+    padding: 0px;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+}
+
+.login-container {
+    width: 100vw; 
+    height: 100vh; 
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+.login-content{
+    background-color: #005FAF;
+    height: 100vh;
+    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-group{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+input{
+    border-radius: 7px;
+    border: 0px;
+    height: 5vh;
+    width: 100%;
+}
+
+.dq-logo{
+    width: 85%;
+}
+
+.cms-title{
+
+    font-size: 25px;
+
+}
+
+.signin-button{
+    width: 350px;
+    height: 46px;
+    border-radius: 7px;
+    border: 0px;
+    margin-top: 10px;
+    background-color: #707070;
+    color: white;
+    font-size: 18px;
+}
+ .signin-button:hover{
+    background-color: #474747;
+ }
