@@ -1,0 +1,237 @@
+:root {
+    --DQ_Color: #005FAF;
+  }
+  
+  .user-management-container {
+    font-family: Arial, sans-serif;
+    max-width: 1200px; 
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  .user-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+  }
+  
+  .user-table th,
+  .user-table td {
+    text-align: left;
+    padding: 12px 15px;
+    border: 1px solid #ddd;
+  }
+  
+  .user-table th {
+    background-color: var(--DQ_Color);
+    color: white;
+    font-weight: bold;
+  }
+  
+  .user-table td {
+    background-color: #fff;
+  }
+  
+  .user-table tr:hover {
+    background-color: #f1f1f1;
+  }
+  
+  /* Button Styles */
+  .add-user-button {
+    background-color: var(--DQ_Color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  .add-user-button:hover {
+    background-color: #004080;
+  }
+  
+  .table-action-buttons button {
+    background-color: var(--DQ_Color);
+    color: white;
+    border: none;
+    padding: 6px 10px;
+    font-size: 12px;
+    cursor: pointer;
+  }
+  
+  .table-action-buttons button:hover {
+    background-color: #004080;
+  }
+  
+  .search-bar {
+    margin-bottom: 15px;
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+  }
+  
+  /* Pagination */
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    margin-top: 20px;
+  }
+  
+  .pagination button {
+    padding: 5px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    cursor: pointer;
+  }
+  
+  .pagination button.active {
+    background-color: var(--DQ_Color);
+    color: white;
+  }
+  
+  .pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+  
+  .pagination span {
+    color: #777;
+  }
+  
+  /* Modal Styles */
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .modal-content {
+    background-color: white;
+    border-radius: 8px;
+    padding: 30px;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .modal-header {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .modal-body label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .modal-body input,
+  .modal-body select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+  
+  .modal-actions button {
+    padding: 8px 15px;
+    background-color: var(--DQ_Color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .modal-actions button:hover {
+    background-color: #004080;
+  }
+  
+  /* Add/Edit Form */
+  .edit-user-container,
+  .add-user-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .edit-user-container h2,
+  .add-user-container h2 {
+    font-size: 20px;
+    color: var(--DQ_Color);
+    margin-bottom: 20px;
+  }
+  
+  .edit-user-container label,
+  .add-user-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .edit-user-container input,
+  .add-user-container input,
+  .edit-user-container select,
+  .add-user-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .edit-user-container button,
+  .add-user-container button {
+    padding: 8px 15px;
+    background-color: var(--DQ_Color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .edit-user-container button:hover,
+  .add-user-container button:hover {
+    background-color: #004080;
+  }
+  
+  .edit-user-container .cancel-button,
+  .add-user-container .cancel-button {
+    background-color: #6c757d;
+  }
+  
+  .edit-user-container .cancel-button:hover,
+  .add-user-container .cancel-button:hover {
+    background-color: #5a6268;
+  }
+  
+  .action-column {
+    display: flex;
+    gap: 10px;
+  }
+  

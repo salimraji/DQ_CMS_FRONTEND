@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import "./LabelList.css";
 import AddLabelModal from "./AddLabelModal";
-import ConfirmDeleteModal from "./ConfirmDeleteModal";
+import ConfirmDeleteModal from "../ConfirmDeleteModal";
 import EditLabelModal from "./EditLabelModal";
 
 function LabelList() {
@@ -24,6 +24,7 @@ function LabelList() {
   });
   const [deleteLabelId, setDeleteLabelId] = useState(null);
   const [searchInput, setSearchInput] = useState("");
+  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const labelsPerPage = 10;
   const apiUrl = "http://192.168.12.113:3000";
@@ -41,8 +42,18 @@ function LabelList() {
   };
 
   useEffect(() => {
-    fetchLabels(currentPage, searchInput);
-  }, [currentPage, searchInput]);
+    fetchLabels(currentPage, debouncedSearch);
+  }, [currentPage, debouncedSearch]);
+
+  useEffect(() => {
+    const handler = setTimeout(() => {
+      setDebouncedSearch(searchInput);
+    }, 300);
+
+    return () => {
+      clearTimeout(handler);
+    };
+  }, [searchInput]);
 
   const totalPages = Math.ceil(totalLabels / labelsPerPage);
 
@@ -66,7 +77,7 @@ function LabelList() {
         .put(`${apiUrl}/api/labels/${selectedLabel._id}`, selectedLabel)
         .then(() => {
           setModalOpen(false);
-          fetchLabels(currentPage, searchInput);
+          fetchLabels(currentPage, debouncedSearch);
         })
         .catch((error) => console.error("Error saving label:", error));
     }
@@ -77,7 +88,7 @@ function LabelList() {
       .post(`${apiUrl}/api/labels`, newLabel)
       .then(() => {
         setAddModalOpen(false);
-        fetchLabels(currentPage, searchInput);
+        fetchLabels(currentPage, debouncedSearch);
         resetNewLabel(); 
       })
       .catch((error) => console.error("Error adding label:", error));
@@ -120,7 +131,7 @@ function LabelList() {
         />
       </div>
 
-      <table>
+      <table className="label-table">
         <thead>
           <tr>
             <th>Key Word</th>
@@ -228,7 +239,7 @@ function LabelList() {
             .delete(`${apiUrl}/api/labels/${deleteLabelId}`)
             .then(() => {
               setDeleteModalOpen(false);
-              fetchLabels(currentPage, searchInput);
+              fetchLabels(currentPage, debouncedSearch);
             })
             .catch((error) => console.error("Error deleting label:", error));
         }}

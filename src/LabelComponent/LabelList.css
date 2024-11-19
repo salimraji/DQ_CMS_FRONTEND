@@ -221,3 +221,8 @@ display: flex;
 gap: 10px;
 
 }
+
+.label-table th{
+  background-color: var(--DQ_Color);
+  color: white;
+}

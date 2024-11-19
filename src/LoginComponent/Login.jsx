@@ -20,8 +20,10 @@ function Login({ onLogin }) {
 
       const data = await response.json();
 
-      if (response.ok && data.token) {
-        onLogin(data.token);
+      if (response.ok && data.token && data.active) {
+        localStorage.setItem("token", data.token);
+        localStorage.setItem("role", data.role); 
+        onLogin(data.token, data.role);
       } else {
         setError(data.message || "Invalid credentials");
       }
@@ -39,18 +41,18 @@ function Login({ onLogin }) {
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>
           <div className="form-group">
-            <label>Username:</label>
             <input
               type="text"
+              placeholder="Username: "
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
             />
           </div>
           <div className="form-group">
-            <label>Password:</label>
             <input
               type="password"
+              placeholder="Password: "
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required

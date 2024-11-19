@@ -1,11 +1,14 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate } from "react-router-dom";
-import SideBar from "./Sidebar";
-import LabelList from "./LabelList";
-import Login from "./Login";
-import "./App.css";
+import SideBar from "./SidebarComponent/Sidebar";
+import LabelList from "./LabelComponent/LabelList";
+import Login from "./LoginComponent/Login";
+import AddUser from "./UserComponent/AddUser"; 
+import EditUser from "./UserComponent/EditUser"; 
+import UserList from "./UserComponent/UserList";
 
-import { jwtDecode }from "jwt-decode";
+import "./App.css";
+import {jwtDecode} from "jwt-decode";
 
 const validateToken = (token) => {
   try {
@@ -18,39 +21,45 @@ const validateToken = (token) => {
   }
 };
 
-
-
 function App() {
   const [isAuthenticated, setIsAuthenticated] = useState(false);
+  const [role, setRole] = useState(null);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const checkAuth = () => {
       const token = localStorage.getItem("token");
+      const savedRole = localStorage.getItem("role");
 
       if (token) {
         const isValid = validateToken(token);
         setIsAuthenticated(isValid);
+        setRole(isValid ? savedRole : null);
 
         if (!isValid) {
-          localStorage.removeItem("token"); 
+          localStorage.removeItem("token");
+          localStorage.removeItem("role");
         }
       }
 
-      setLoading(false); 
+      setLoading(false);
     };
 
     checkAuth();
   }, []);
 
-  const handleLogin = (token) => {
+  const handleLogin = (token, userRole) => {
     localStorage.setItem("token", token);
+    localStorage.setItem("role", userRole);
     setIsAuthenticated(true);
+    setRole(userRole);
   };
 
   const handleLogout = () => {
     localStorage.removeItem("token");
+    localStorage.removeItem("role");
     setIsAuthenticated(false);
+    setRole(null);
   };
 
   if (loading) {
@@ -60,7 +69,7 @@ function App() {
   return (
     <Router>
       <div className="app-container">
-        {isAuthenticated && <SideBar onLogout={handleLogout} />}
+        {isAuthenticated && <SideBar role={role} onLogout={handleLogout} />}
         <div className={`content ${isAuthenticated ? "with-sidebar" : ""}`}>
           <Routes>
             <Route
@@ -84,10 +93,30 @@ function App() {
               }
             />
             <Route
-              path="/news"
+              path="/users"
               element={
-                isAuthenticated ? (
-                  <div>News Page</div>
+                isAuthenticated && role === "admin" ? (
+                  <UserList />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
+            <Route
+              path="/users/add"
+              element={
+                isAuthenticated && role === "admin" ? (
+                  <AddUser />
+                ) : (
+                  <Navigate to="/login" replace />
+                )
+              }
+            />
+            <Route
+              path="/users/edit/:userId"
+              element={
+                isAuthenticated && role === "admin" ? (
+                  <EditUser />
                 ) : (
                   <Navigate to="/login" replace />
                 )
@@ -103,7 +132,4 @@ function App() {
     </Router>
   );
 }
-
-
-
 export default App;
