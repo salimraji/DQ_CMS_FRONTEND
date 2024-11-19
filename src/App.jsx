@@ -6,6 +6,8 @@ import Login from "./LoginComponent/Login";
 import AddUser from "./UserComponent/AddUser"; 
 import EditUser from "./UserComponent/EditUser"; 
 import UserList from "./UserComponent/UserList";
+import PageList from "./PagesComponent/PageList";
+import PageDetails from "./PagesComponent/PageDetails"
 
 import "./App.css";
 import {jwtDecode} from "jwt-decode";
@@ -126,6 +128,9 @@ function App() {
               path="*"
               element={<Navigate to={isAuthenticated ? "/labels" : "/login"} replace />}
             />
+
+            <Route path="/pages" element={<PageList />} />
+            <Route path="/pages/:id" element={<PageDetails />} />
           </Routes>
         </div>
       </div>

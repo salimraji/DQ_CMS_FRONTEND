@@ -30,14 +30,7 @@ function UserList() {
   }, []);
 
   const handleResetPassword = async (userId) => {
-    try {
-      await fetch(`http://192.168.12.113:3000/api/users/${userId}/reset-password`, {
-        method: "POST",
-      });
-      alert("Password reset successfully.");
-    } catch (error) {
-      console.error("Error resetting password:", error);
-    }
+
   };
 
 
@@ -93,16 +86,20 @@ function UserList() {
 
   return (
     <div className="user-list-container">
-      <button className="add-user-button" onClick={handleAddUser}>
-        + Add User
-      </button>
-      <input
-        type="text"
-        className="search-bar"
-        placeholder="Search records"
-        value={search}
-        onChange={(e) => setSearch(e.target.value)}
-      />
+      <h2>Manage Users</h2>
+      <div className="header-controls">
+        <button className="add-user-button" onClick={handleAddUser}>
+          + Add User
+        </button>
+        <input
+          type="text"
+          className="search-input"
+          placeholder="Search records"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </div>
+
       <table className="user-table">
         <thead>
           <tr>

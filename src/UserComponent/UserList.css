@@ -14,6 +14,11 @@
     border-collapse: collapse;
     margin-top: 20px;
   }
+
+  .user-table button{
+    border-radius: 0;
+    margin-right: 10px; 
+  }
   
   .user-table th,
   .user-table td {
@@ -42,7 +47,6 @@
     color: white;
     border: none;
     padding: 10px 15px;
-    border-radius: 5px;
     font-size: 14px;
     cursor: pointer;
     margin-bottom: 15px;
@@ -65,13 +69,6 @@
     background-color: #004080;
   }
   
-  .search-bar {
-    margin-bottom: 15px;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-    width: 250px;
-  }
   
   /* Pagination */
   .pagination {
@@ -233,5 +230,12 @@
   .action-column {
     display: flex;
     gap: 10px;
+  }
+
+
+  .header-controls{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
   }
   

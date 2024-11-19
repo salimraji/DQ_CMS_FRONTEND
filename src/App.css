@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
-
+:root {
+  --DQ_Color: #005FAF;
+  --DQ_Color_Hover: #004e8d;
+}
 
 html, body {
   font-family: 'Open Sans', sans-serif;
@@ -25,4 +28,21 @@ html, body {
 input{
   padding-left: 10px;
   font-size: 18px;
+}
+
+
+table th{
+  background-color: var(--DQ_Color);
+  color: white;
+  height: 25px;
+}
+
+.search-input{
+  margin-bottom: 15px;
+  padding: 1px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 250px;
+  font-size: 13px;
+  height: 30px;
 }

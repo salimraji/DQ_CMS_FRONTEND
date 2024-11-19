@@ -1,0 +1,32 @@
+.detail-item{
+    border: 1px solid black;
+}
+.detail-header{
+    display: flex;
+    justify-content: space-between;
+}
+
+.delete-detail{
+    background-color: var(--DQ_Color);
+    color: white;
+    border: 0px;
+    height: 30px;
+}
+
+.children-container{
+    border: 1px solid black;
+}
+
+.children{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+
+}
+
+.children input{
+    width: 300px;
+}
+
