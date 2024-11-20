@@ -7,8 +7,8 @@ function AddUser() {
     firstName: "",
     lastName: "",
     email: "",
-    role: "support", // Match role values from the schema
-    password: "", // Include password for user creation
+    role: "support", 
+    password: "", 
   });
 
   const handleSave = async (e) => {

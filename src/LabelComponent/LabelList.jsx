@@ -30,24 +30,23 @@ function LabelList() {
   const apiUrl = "http://192.168.12.113:3000";
 
   const fetchLabels = (page = 1, search = "") => {
-    const token = localStorage.getItem("token"); // Retrieve the token from localStorage (or other storage)
+    const token = localStorage.getItem("token"); 
 
     axios
         .get(`${apiUrl}/api/labels`, {
             params: { page, limit: labelsPerPage, search },
             headers: {
-                Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+                Authorization: `Bearer ${token}`, 
             },
         })
         .then((response) => {
-            setLabels(response.data.labels); // Set the fetched labels
-            setTotalLabels(response.data.total); // Set the total labels count
+            setLabels(response.data.labels); 
+            setTotalLabels(response.data.total);
         })
         .catch((error) => {
             console.error("Error fetching labels:", error);
             if (error.response?.status === 403) {
-                alert("Your session has expired. Please log in again."); // Alert for unauthorized access
-                // Optionally handle token expiration (e.g., redirect to login)
+                alert("Your session has expired. Please log in again.");
             }
         });
 };

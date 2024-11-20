@@ -21,7 +21,6 @@ function EditUser() {
     fetchUser();
   }, [userId]);
 
-  // Handle form submission for saving changes
   const handleSave = async (e) => {
     e.preventDefault();
     try {
@@ -33,18 +32,16 @@ function EditUser() {
         body: JSON.stringify(user),
       });
       alert("User updated successfully.");
-      navigate("/users"); // Navigate back to the user list
+      navigate("/users"); 
     } catch (error) {
       console.error("Error updating user:", error);
     }
   };
 
-  // Handle input changes dynamically
   const handleChange = (field, value) => {
     setUser((prevUser) => ({ ...prevUser, [field]: value }));
   };
 
-  // Show loading state if user data is not yet loaded
   if (!user) {
     return <div>Loading user details...</div>;
   }
