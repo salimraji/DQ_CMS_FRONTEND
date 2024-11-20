@@ -9,66 +9,16 @@
     padding: 20px;
   }
   
-  .user-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-  }
 
-  .user-table button{
-    border-radius: 0;
-    margin-right: 10px; 
-  }
-  
-  .user-table th,
-  .user-table td {
-    text-align: left;
-    padding: 12px 15px;
-    border: 1px solid #ddd;
-  }
-  
-  .user-table th {
-    background-color: var(--DQ_Color);
-    color: white;
-    font-weight: bold;
-  }
-  
-  .user-table td {
-    background-color: #fff;
-  }
-  
-  .user-table tr:hover {
-    background-color: #f1f1f1;
-  }
-  
+
+
   /* Button Styles */
-  .add-user-button {
-    background-color: var(--DQ_Color);
-    color: white;
-    border: none;
-    padding: 10px 15px;
-    font-size: 14px;
-    cursor: pointer;
-    margin-bottom: 15px;
-  }
+
   
   .add-user-button:hover {
     background-color: #004080;
   }
-  
-  .table-action-buttons button {
-    background-color: var(--DQ_Color);
-    color: white;
-    border: none;
-    padding: 6px 10px;
-    font-size: 12px;
-    cursor: pointer;
-  }
-  
-  .table-action-buttons button:hover {
-    background-color: #004080;
-  }
-  
+
   
   /* Pagination */
   .pagination {

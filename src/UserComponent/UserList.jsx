@@ -88,7 +88,7 @@ function UserList() {
     <div className="user-list-container">
       <h2>Manage Users</h2>
       <div className="header-controls">
-        <button className="add-user-button" onClick={handleAddUser}>
+        <button className="add-button" onClick={handleAddUser}>
           + Add User
         </button>
         <input

@@ -13,8 +13,10 @@ function DetailItem({ detail }) {
             {showChildren && detail.Children && detail.Children.length > 0 && (
                 <div className='children-container'>
                     <div className="children">
-                        <label>{detail.Key}</label>
-                        <input type="text" defaultValue={detail.Value} />
+                        <div className='child-item'>
+                            <label>{detail.Key}</label>
+                            <input type="text" defaultValue={detail.Value} />
+                        </div>
                         {detail.Children.filter(child => child.Key !== "ReferenceGuid").map((child, index) => (
                             <div key={index} className="child-item">
                                 <label>{child.Key}</label>
@@ -22,7 +24,10 @@ function DetailItem({ detail }) {
                             </div>
                         ))}
                     </div>
-                    <button>Save</button>
+                    <div className='children-footer'>
+                        <button>Save</button>
+                    </div>
+                    
                 </div>
 
 

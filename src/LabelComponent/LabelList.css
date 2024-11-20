@@ -8,11 +8,7 @@
   margin: 0 auto;      
 }
 
-table {
-  font-size: 13px;
-  width: 100%;
-  border-collapse: collapse;
-}
+
 
 th, td {
   padding: 10px;
@@ -20,17 +16,7 @@ th, td {
   text-align: left;
 }
 
-table button {
-  padding: 5px 10px;
-  background-color: var(--DQ_Color);
-  color: white;
-  border: none;
-  cursor: pointer;
-}
 
-button:hover {
-  background-color: var(--DQ_Color);
-}
 
 .modal {
   position: fixed;
@@ -119,6 +105,7 @@ button:hover {
   border: 1px solid #ccc;
   background: #f9f9f9;
   cursor: pointer;
+  color: black;
   font-size: 12px;
 }
 
@@ -138,22 +125,10 @@ button:hover {
   color: #777;
 }
 
-
-.add-label-button{
-  width: 80px;
-  height: 35px;
-  font-size: 14px;
-  padding: 0px;
-  background-color: var(--DQ_Color);
-  border: 0px;
-  color: white;
-}
-
 .label-list .header-controls {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 10px;
 }
 
 .search-input {
@@ -214,9 +189,4 @@ background-color: var(--DQ_Color);
 display: flex;
 gap: 10px;
 
-}
-
-.label-table th{
-  background-color: var(--DQ_Color);
-  color: white;
 }

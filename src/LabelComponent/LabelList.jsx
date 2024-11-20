@@ -30,16 +30,28 @@ function LabelList() {
   const apiUrl = "http://192.168.12.113:3000";
 
   const fetchLabels = (page = 1, search = "") => {
+    const token = localStorage.getItem("token"); // Retrieve the token from localStorage (or other storage)
+
     axios
-      .get(`${apiUrl}/api/labels`, {
-        params: { page, limit: labelsPerPage, search },
-      })
-      .then((response) => {
-        setLabels(response.data.labels);
-        setTotalLabels(response.data.total);
-      })
-      .catch((error) => console.error("Error fetching labels:", error));
-  };
+        .get(`${apiUrl}/api/labels`, {
+            params: { page, limit: labelsPerPage, search },
+            headers: {
+                Authorization: `Bearer ${token}`, // Include the token in the Authorization header
+            },
+        })
+        .then((response) => {
+            setLabels(response.data.labels); // Set the fetched labels
+            setTotalLabels(response.data.total); // Set the total labels count
+        })
+        .catch((error) => {
+            console.error("Error fetching labels:", error);
+            if (error.response?.status === 403) {
+                alert("Your session has expired. Please log in again."); // Alert for unauthorized access
+                // Optionally handle token expiration (e.g., redirect to login)
+            }
+        });
+};
+
 
   useEffect(() => {
     fetchLabels(currentPage, debouncedSearch);
@@ -114,13 +126,13 @@ function LabelList() {
       <h2>Label Listing</h2>
       <div className="header-controls">
         <button
-          className="add-label-button"
+          className="add-button"
           onClick={() => {
             resetNewLabel();
             setAddModalOpen(true);
           }}
         >
-          Add Label
+          + Add Label
         </button>
         <input
           type="text"

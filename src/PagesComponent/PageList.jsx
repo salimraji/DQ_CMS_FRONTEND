@@ -14,9 +14,13 @@ function PageList() {
     const apiUrl = "http://192.168.12.113:3000";
 
     const fetchPages = (page = 1, search = "") => {
-        setLoading(true);
+        setLoading(true);;
+        const token = localStorage.getItem("token")
         axios.get(`${apiUrl}/api/pages`, {
-            params: { page, limit: pagesPerPage, search }
+            params: { page, limit: pagesPerPage, search },
+            headers: {
+                Authorization: `Bearer ${token}`,
+            }
         })
         .then(response => {
             setPages(response.data.pages);

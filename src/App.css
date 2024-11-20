@@ -13,6 +13,28 @@ html, body {
   box-sizing: border-box;
 }
 
+h2{
+  padding: 0px;
+  margin: 10px 0px 2px 0px;
+}
+
+.add-button{
+  background-color: var(--DQ_Color);
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+button:hover {
+  background-color: var(--DQ_Color);
+  color: white;
+  cursor: pointer;
+}
+
+
 
 .app-container {
   display: flex;
@@ -30,11 +52,53 @@ input{
   font-size: 18px;
 }
 
+table{
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 0px;
+  font-size: 16px;
+
+}
+
 
 table th{
   background-color: var(--DQ_Color);
   color: white;
-  height: 25px;
+  height: 20px;
+  font-weight: bold;
+}
+
+table td{
+  background-color: #fff;
+}
+
+table tr:hover{
+  background-color: #f1f1f1;
+}
+
+table button{
+  border-radius: 0;
+  margin-right: 10px; 
+  background-color: var(--DQ_Color);
+  color: white;
+  border: none;
+  padding: 6px 10px;
+  cursor: pointer;
+}
+
+table button:hover{
+  background-color: #004080;
+}
+
+table th{
+  text-align: left;
+  padding: 12px 15px;
+  border: 1px solid #ddd;
+}
+
+table td{
+  padding: 0px 0px 0px 20px;
+  height: 40px;
 }
 
 .search-input{
