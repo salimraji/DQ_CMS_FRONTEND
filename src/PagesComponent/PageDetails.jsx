@@ -28,7 +28,7 @@ function PageDetails() {
             .catch((error) => console.error('Error fetching data:', error));
     }, [id]);
 
-    const template1 = ['WORKSHOPS', 'BRANCHES', 'EMERGENCYNIMBERS'];
+    const template1 = ['WORKSHOPS', 'BRANCHES', 'EMERGENCYNUMBERS'];
 
     const openModal = (tag) => {
         if (template1.includes(tag)) {
@@ -51,16 +51,15 @@ function PageDetails() {
             <button className="back-to-pages" onClick={() => navigate('/pages')}>
                 Back to Pages
             </button>
-            {page.Tag !== 'ABOUTUS' && page.Tag !== 'POLICYMENU' && (
+            {page.Tag !== 'ABOUTUS' && page.Tag !== 'PRIVACYPOLICY' && (
                 <button onClick={() => openModal(page.Tag)}>+ Add Content</button>
             )}
             <div className="page-details">
                 {page.Details.map((detail, index) => (
-                    <DetailItem key={index} detail={detail} />
+                    <DetailItem key={index} detail={detail} pageId={page._id} />
                 ))}
             </div>
 
-            {/* Render Modal based on modalType */}
             {modalType === 'AddContentModal1' && <AddContentModal1 closeModal={closeModal} pageId={id} />}
             {modalType === 'AddContentModal2' && <AddContentModal2 closeModal={closeModal} pageId={id} />}
 

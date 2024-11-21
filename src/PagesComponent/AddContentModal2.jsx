@@ -3,9 +3,9 @@ import axios from 'axios';
 
 function AddContentModal2({ closeModal, pageId }) {
     const [formData, setFormData] = useState({
-        image: null,
-        title: '',
+        name: '',
         description: '',
+        image:'',
         order: '',
     });
 
@@ -14,28 +14,17 @@ function AddContentModal2({ closeModal, pageId }) {
         setFormData({ ...formData, [name]: value });
     };
 
-    const handleFileChange = (e) => {
-        setFormData({ ...formData, image: e.target.files[0] });
-    };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
             const token = localStorage.getItem('token'); 
-            const formDataToSend = new FormData();
-            formDataToSend.append('image', formData.image);
-            formDataToSend.append('title', formData.title);
-            formDataToSend.append('description', formData.description);
-            formDataToSend.append('order', formData.order);
-
             const response = await axios.post(
                 `http://192.168.12.113:3000/api/pages/${pageId}/add-detail`,
-                formDataToSend,
+                formData,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
-                        'Content-Type': 'multipart/form-data',
                     },
                 }
             );
@@ -51,25 +40,32 @@ function AddContentModal2({ closeModal, pageId }) {
     return (
         <div className="modal">
             <div className="modal-content">
-                <h3>New Walk Through Page</h3>
+                <h3>New Impression</h3>
                 <form onSubmit={handleSubmit}>
-                    <label>Page Image:</label>
-                    <input type="file" name="image" onChange={handleFileChange} />
-                    <label>Page Title:</label>
+                    <label>Image</label>
                     <input
-                        type="text"
-                        name="title"
-                        placeholder="Enter Page Title"
-                        value={formData.title}
+                        type="file"
+                        name="image"
+                        value={formData.image}
                         onChange={handleChange}
                     />
-                    <label>Description:</label>
-                    <textarea
+                    <label>Name:</label>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Enter Name"
+                        value={formData.name}
+                        onChange={handleChange}
+                    />
+
+                    <label>Description</label>
+                    <input
+                        type="text"
                         name="description"
-                        placeholder="Enter Description"
+                        placeholder="Enter description"
                         value={formData.description}
                         onChange={handleChange}
-                    ></textarea>
+                    />
                     <label>Order:</label>
                     <input
                         type="text"
