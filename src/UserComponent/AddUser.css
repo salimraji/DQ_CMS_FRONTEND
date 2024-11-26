@@ -1,0 +1,52 @@
+/* Add Modal */
+.add-user-container {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .add-user-container h2 {
+    font-size: 20px;
+    color: var(--DQ_Color);
+    margin-bottom: 20px;
+  }
+  
+  .add-user-container label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+  }
+  
+  .add-user-container input,
+  .add-user-container select {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    margin-bottom: 20px;
+  }
+  
+  .add-user-container button {
+    padding: 8px 15px;
+    background-color: var(--DQ_Color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  .add-user-container button:hover {
+    background-color: #004080;
+  }
+  
+  .add-user-container .cancel-button {
+    background-color: #6c757d;
+  }
+  
+  .add-user-container .cancel-button:hover {
+    background-color: #5a6268;
+  }
+  

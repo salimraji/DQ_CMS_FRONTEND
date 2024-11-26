@@ -12,7 +12,7 @@ function Sidebar({ role }) {
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
-        <img src="../DQ_LOGO.png" alt="DQ LOGO" />
+        <img src="http://192.168.12.113:3000/uploads/CompanyLogo/DQ_LOGO.png" alt="DQ LOGO" />
       </div>
       <ul className="sidebar-menu">
         <Link to="/pages">
@@ -24,7 +24,7 @@ function Sidebar({ role }) {
         <Link to="/labels">
           <li>Labels</li>
         </Link>
-        {role === "admin" && (
+        {(role === "admin" || role === "Admin") && (
           <Link to="/users">
             <li>Users</li>
           </Link>

@@ -48,12 +48,15 @@ function PageDetails() {
     return (
         <div className="page-details-view">
             <h2>Page Details</h2>
-            <button className="back-to-pages" onClick={() => navigate('/pages')}>
-                Back to Pages
-            </button>
-            {page.Tag !== 'ABOUTUS' && page.Tag !== 'PRIVACYPOLICY' && (
-                <button onClick={() => openModal(page.Tag)}>+ Add Content</button>
-            )}
+                <div className='page-actions'>
+                    <button className="back-to-pages" onClick={() => navigate('/pages')}>
+                        Back
+                    </button>
+                    {page.Tag !== 'ABOUTUS' && page.Tag !== 'PRIVACYPOLICY' && (
+                        <button onClick={() => openModal(page.Tag)}>+ Add Content</button>
+                    )}
+                </div>
+
             <div className="page-details">
                 {page.Details.map((detail, index) => (
                     <DetailItem key={index} detail={detail} pageId={page._id} />

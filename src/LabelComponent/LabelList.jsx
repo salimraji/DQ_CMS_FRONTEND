@@ -84,8 +84,13 @@ function LabelList() {
 
   const handleEditSave = () => {
     if (selectedLabel) {
+      const token = localStorage.getItem(`token`)
       axios
-        .put(`${apiUrl}/api/labels/${selectedLabel._id}`, selectedLabel)
+        .put(`${apiUrl}/api/labels/${selectedLabel._id}`, selectedLabel, {
+          headers: {
+            Authorization: `Bearer ${token}`, 
+        },
+        })
         .then(() => {
           setModalOpen(false);
           fetchLabels(currentPage, debouncedSearch);
@@ -95,8 +100,13 @@ function LabelList() {
   };
 
   const handleAddLabel = () => {
+    const token = localStorage.getItem('token')
     axios
-      .post(`${apiUrl}/api/labels`, newLabel)
+      .post(`${apiUrl}/api/labels`, newLabel, {
+        headers: {
+          Authorization: `Bearer ${token}`, 
+      },
+      })
       .then(() => {
         setAddModalOpen(false);
         fetchLabels(currentPage, debouncedSearch);
@@ -246,8 +256,13 @@ function LabelList() {
         isOpen={isDeleteModal}
         onClose={() => setDeleteModalOpen(false)}
         onConfirm={() => {
+          const token = localStorage.getItem('token')
           axios
-            .delete(`${apiUrl}/api/labels/${deleteLabelId}`)
+            .delete(`${apiUrl}/api/labels/${deleteLabelId}`,{
+              headers: {
+                Authorization: `Bearer ${token}`, 
+            },
+            })
             .then(() => {
               setDeleteModalOpen(false);
               fetchLabels(currentPage, debouncedSearch);

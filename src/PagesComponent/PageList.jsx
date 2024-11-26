@@ -63,7 +63,7 @@ function PageList() {
                 <tbody>
                     {pages.map(page => (
                         <tr key={page.Guid}>
-                            <td>{page.Details.find(detail => detail.Key === "Title")?.Value || "Untitled"}</td>
+                            <td>{page.Tag} -- {page.Details.find(detail => detail.Key === "Title")?.Value || "Untitled"}</td>
                             <td>
                                 <Link to={`/pages/${page._id}`}>
                                     <button>Edit</button>
@@ -74,7 +74,6 @@ function PageList() {
                 </tbody>
             </table>
 
-            {/* Pagination Controls */}
             <div className="pagination">
                 <button
                     onClick={() => handlePageChange(currentPage - 1)}

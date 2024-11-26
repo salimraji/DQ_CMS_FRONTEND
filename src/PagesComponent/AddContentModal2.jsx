@@ -1,80 +1,88 @@
 import React, { useState } from 'react';
 import axios from 'axios';
 
-function AddContentModal2({ closeModal, pageId }) {
+function AddContentModal2({ pageId, closeModal }) {
     const [formData, setFormData] = useState({
         name: '',
         description: '',
-        image:'',
+        PageImage: '',
         order: '',
     });
 
-    const handleChange = (e) => {
+    const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData({ ...formData, [name]: value });
+    };
+
+    const handleFileChange = (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                setFormData({ ...formData, PageImage: reader.result }); 
+            };
+            reader.readAsDataURL(file);
+        }
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
         try {
-            const token = localStorage.getItem('token'); 
+            const token = localStorage.getItem('token');
             const response = await axios.post(
                 `http://192.168.12.113:3000/api/pages/${pageId}/add-detail`,
                 formData,
                 {
                     headers: {
                         Authorization: `Bearer ${token}`,
+                        'Content-Type': 'application/json',
                     },
                 }
             );
-
-            alert(response.data.message); 
-            closeModal();
+            alert('Detail added successfully!');
+            closeModal(); 
         } catch (error) {
             console.error('Error adding detail:', error.response?.data || error.message);
-            alert('Error adding detail. Please try again.');
+            alert('Failed to add detail.');
         }
     };
 
     return (
         <div className="modal">
             <div className="modal-content">
-                <h3>New Impression</h3>
+                <h3>Add Detail</h3>
                 <form onSubmit={handleSubmit}>
-                    <label>Image</label>
+                    <label>Image:</label>
                     <input
                         type="file"
-                        name="image"
-                        value={formData.image}
-                        onChange={handleChange}
+                        accept="image/*"
+                        onChange={handleFileChange}
                     />
                     <label>Name:</label>
                     <input
                         type="text"
                         name="name"
-                        placeholder="Enter Name"
                         value={formData.name}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
+                        required
                     />
-
-                    <label>Description</label>
-                    <input
-                        type="text"
+                    <label>Description:</label>
+                    <textarea
                         name="description"
-                        placeholder="Enter description"
                         value={formData.description}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
+                        rows="4"
                     />
                     <label>Order:</label>
                     <input
-                        type="text"
+                        type="number"
                         name="order"
-                        placeholder="Enter Order"
                         value={formData.order}
-                        onChange={handleChange}
+                        onChange={handleInputChange}
+                        required
                     />
-                    <button type="submit">Add Content</button>
+                    <button type="submit">Add Detail</button>
                 </form>
                 <button onClick={closeModal}>Close</button>
             </div>

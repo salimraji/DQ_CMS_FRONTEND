@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './EditLabelModal.css'
 
 function EditLabelModal({ isOpen, onClose, onSave, selectedLabel, onLabelChange, onDelete, activeTab, onTabChange }) {
   const [errors, setErrors] = useState({});
@@ -24,7 +25,7 @@ function EditLabelModal({ isOpen, onClose, onSave, selectedLabel, onLabelChange,
         <h3>Edit Label</h3>
         <div className="modal-body">
           <div className="tabs">
-            {["English", "Arabic", "French", "Spanish", "German"].map((lang) => (
+            {["English", "Arabic", "French",].map((lang) => (
               <button key={lang} className={activeTab === lang ? "active" : ""} onClick={() => onTabChange(lang)}>
                 {lang}
               </button>

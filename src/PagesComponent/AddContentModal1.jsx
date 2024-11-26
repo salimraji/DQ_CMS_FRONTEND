@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import './AddCOntentModal1.css'
 
 function AddContentModal1({ closeModal, pageId }) {
     const [formData, setFormData] = useState({
@@ -101,9 +102,13 @@ function AddContentModal1({ closeModal, pageId }) {
                         value={formData.order}
                         onChange={handleChange}
                     />
-                    <button type="submit">Add Content</button>
+                    <div className='modal-actions'>
+                        <button type="submit">Add Content</button>
+                        <button onClick={closeModal}>Close</button>
+                    </div>
+
                 </form>
-                <button onClick={closeModal}>Close</button>
+                
             </div>
         </div>
     );

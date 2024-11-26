@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './LabelList.css';
+import './AddLabelModal.css';
 
 function AddLabelModal({ isOpen, onClose, onSubmit, newLabel, onLabelChange }) {
   const [errors, setErrors] = useState({});
@@ -41,7 +41,7 @@ function AddLabelModal({ isOpen, onClose, onSubmit, newLabel, onLabelChange }) {
             {errors.Tag && <span className="error-text">{errors.Tag}</span>}
           </div>
 
-          {['English', 'Arabic', 'French', 'Spanish', 'German'].map((lang) => (
+          {['English', 'Arabic', 'French', ].map((lang) => (
             <div key={lang}>
               <label>{lang}</label>
               <input

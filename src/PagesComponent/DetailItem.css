@@ -1,7 +1,7 @@
 :root {
     --DQ_Color: #005FAF;
     --DQ_Color_Hover: #004e8d;
-  }
+}
 
 .detail-item {
     border: 1px solid #ddd;
@@ -55,7 +55,8 @@
     gap: 10px;
 }
 
-.children input {
+.children input,
+.children textarea {
     width: 100%;
     padding: 8px;
     font-size: 14px;
@@ -80,7 +81,7 @@
 
 button {
     margin-top: 10px;
-    background-color:var(--DQ_Color);
+    background-color: var(--DQ_Color);
     color: white;
     border: none;
     padding: 10px 15px;
@@ -95,9 +96,55 @@ button:hover {
     background-color: var(--DQ_Color_Hover);
 }
 
-
-.children-footer{
+.children-footer {
     width: 100%;
     display: flex;
-    justify-content: end;
+    justify-content: flex-end;
 }
+
+.child-item textarea {
+    max-height: 150px; 
+    overflow-y: auto; 
+    resize: vertical; 
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.image-container img {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 10px;
+}
+
+.image-container input[type="file"] {
+    margin-top: 10px;
+}
+
+.image-detail-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+.details-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    width: 100%;
+}
+
+.details-container .child-item {
+    display: flex;
+    flex-direction: column;
+}
+

@@ -1,0 +1,77 @@
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 17px;
+  }
+  
+  .modal-content {
+    margin-bottom: 75px;
+    padding: 50px;
+    background: #fff;
+  }
+  
+  .tabs {
+    display: flex;
+    gap: 10px;
+  }
+  
+  .tabs button {
+    padding: 8px;
+    border: 1px solid #ccc;
+    background: #f9f9f9;
+    cursor: pointer;
+    font-weight: bold;
+    color: black;
+  }
+  
+  .tabs button:hover {
+    background-color: var(--DQ_Color);
+    color: white;
+  }
+  
+  .tabs .active {
+    border-bottom: 2px solid var(--DQ_Color);
+    background-color: #e9ecef;
+    font-weight: bold;
+  }
+  
+  .readonly-input {
+    background-color: #e9ecef;
+    color: #6c757d;
+    border: none;
+  }
+  
+  .tab-content label {
+    display: block;
+    font-weight: bold;
+    margin-top: 10px;
+  }
+  
+  .tab-content input {
+    width: 100%;
+    padding: 2px 0px 2px 10px;
+    
+    margin-top: 5px;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-top: 10px;
+  }
+  
+  .modal-actions button {
+    padding: 5px 10px;
+    background-color: var(--DQ_Color);
+    color: white;
+  }
+  

@@ -4,7 +4,7 @@
 }
 
 .sidebar {
-  width: 200px;
+  width: 160px;
   height: 100vh;
   background-color: var(--DQ_Color); 
   color: white;
@@ -23,18 +23,12 @@
   margin-bottom: 30px;
 }
 
-.sidebar-logo h2 {
-  background-color: var(--DQ_Color);
-  color: white;
-  padding: 10px;
-  border-radius: 50%;
-  margin-right: 10px;
+
+.sidebar-logo img{
+  width: 160px;
 }
 
-.sidebar-logo span {
-  font-size: 18px;
-  font-weight: bold;
-}
+
 
 .sidebar-menu {
   list-style-type: none;

@@ -1,18 +1,18 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
-
+import './EditUser.css';
 
 function EditUser() {
   const { userId } = useParams();
   const navigate = useNavigate();
-  const [user, setUser] = useState(null); 
+  const [user, setUser] = useState(null);
 
   useEffect(() => {
     const fetchUser = async () => {
       try {
-        const response = await fetch(`http://192.168.12.113:3000/api/users/${userId}`); 
+        const response = await fetch(`http://192.168.12.113:3000/api/users/${userId}`);
         const data = await response.json();
-        setUser(data); 
+        setUser(data);
       } catch (error) {
         console.error("Error fetching user:", error);
       }
@@ -32,7 +32,7 @@ function EditUser() {
         body: JSON.stringify(user),
       });
       alert("User updated successfully.");
-      navigate("/users"); 
+      navigate("/users");
     } catch (error) {
       console.error("Error updating user:", error);
     }
@@ -53,7 +53,7 @@ function EditUser() {
           First Name:
           <input
             type="text"
-            value={user.firstName}
+            value={user.firstName || ""}
             onChange={(e) => handleChange("firstName", e.target.value)}
             required
           />
@@ -62,7 +62,7 @@ function EditUser() {
           Last Name:
           <input
             type="text"
-            value={user.lastName}
+            value={user.lastName || ""}
             onChange={(e) => handleChange("lastName", e.target.value)}
             required
           />
@@ -71,7 +71,7 @@ function EditUser() {
           Email:
           <input
             type="email"
-            value={user.email}
+            value={user.email || ""}
             onChange={(e) => handleChange("email", e.target.value)}
             required
           />
@@ -79,17 +79,22 @@ function EditUser() {
         <label>
           Role:
           <select
-            value={user.role}
+            value={user.role || ""}
             onChange={(e) => handleChange("role", e.target.value)}
+            required
           >
+            <option value="">Select Role</option>
             <option value="Support">Support</option>
             <option value="Admin">Admin</option>
+            <option value='Superadmin'>Super Admin</option>
           </select>
         </label>
-        <button type="submit">Save</button>
-        <button type="button" onClick={() => navigate("/users")}>
-          Cancel
-        </button>
+        <div className="edit-actions">
+          <button type="submit">Save</button>
+          <button type="button" onClick={() => navigate("/users")}>
+            Cancel
+          </button>
+        </div>
       </form>
     </div>
   );

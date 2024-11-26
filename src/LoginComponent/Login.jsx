@@ -36,7 +36,7 @@ function Login({ onLogin }) {
   return (
     <div className="login-container">
       <div className="login-content">
-        <img className="dq-logo" src="../public/DQ_LOGO.png" alt="Logo" />
+        <img className="dq-logo" src="src\assets\DQ_LOGO.png" alt="Logo" />
         <p className="cms-title">Content Management System</p>
         {error && <p className="error-message">{error}</p>}
         <form onSubmit={handleSubmit}>

@@ -1,0 +1,44 @@
+.add-modal-content {
+    padding: 30px;
+    background: #fff;
+    width: 400px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  
+  .add-modal-body {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+  }
+  
+  .add-modal-body label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  .add-modal-body input[type="text"] {
+    width: 100%;
+    padding: 1px;
+    border: 1px solid #ccc;
+  }
+  
+  .modal-actions {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .modal-actions button {
+    padding: 8px 20px;
+    background-color: var(--DQ_Color);
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .modal-actions button:hover {
+    background-color: var(--DQ_Color);
+  }
+  
