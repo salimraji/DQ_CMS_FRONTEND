@@ -12,6 +12,10 @@ import PageDetails from "./PagesComponent/PageDetails";
 import "./App.css";
 import { jwtDecode } from "jwt-decode";
 
+if (typeof global === 'undefined') {
+  window.global = window;
+}
+
 const validateToken = (token) => {
   try {
     const decoded = jwtDecode(token);

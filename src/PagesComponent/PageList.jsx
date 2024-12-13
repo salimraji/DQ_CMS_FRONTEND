@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 function PageList() {
   const [pages, setPages] = useState([]);
@@ -8,7 +9,6 @@ function PageList() {
   const [totalPages, setTotalPages] = useState(0);
   const [loading, setLoading] = useState(false);
   const [searchInput, setSearchInput] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const pagesPerPage = 10;
   const apiUrl = "http://192.168.12.113:3000";
@@ -36,23 +36,8 @@ function PageList() {
   };
 
   useEffect(() => {
-    fetchPages(currentPage, debouncedSearch);
-  }, [currentPage, debouncedSearch]);
-
-  useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearch(searchInput);
-    }, 300);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchInput]);
-
-  const handleSearchChange = (e) => {
-    setSearchInput(e.target.value);
-    setCurrentPage(1);
-  };
+    fetchPages(currentPage, searchInput);
+  }, [currentPage, searchInput]);
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -64,12 +49,12 @@ function PageList() {
 
       {/* Search Bar */}
       <div className="header-controls">
-        <input
-          type="text"
+        <SearchBar
           placeholder="Search pages..."
-          value={searchInput}
-          onChange={handleSearchChange}
-          className="search-input"
+          onSearch={(value) => {
+            setSearchInput(value);
+            setCurrentPage(1);
+          }}
         />
       </div>
 
@@ -88,9 +73,7 @@ function PageList() {
             {pages.map((page) => (
               <tr key={page.Guid}>
                 <td>
-                  {page.Tag} --{" "}
-                  {page.Details.find((detail) => detail.Key === "Title")?.Value ||
-                    "Untitled"}
+                  {page.Tag} -- {page.Details.find((detail) => detail.Key === "Title")?.Value || "Untitled"}
                 </td>
                 <td>
                   <Link to={`/pages/${page._id}`}>

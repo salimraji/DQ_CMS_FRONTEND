@@ -1,6 +1,8 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
+import logo from "../assets/DQ_LOGO.png";
+
 
 function Sidebar({ role }) {
   const handleLogout = () => {
@@ -12,7 +14,7 @@ function Sidebar({ role }) {
   return (
     <div className="sidebar">
       <div className="sidebar-logo">
-        <img src="http://192.168.12.113:3000/uploads/CompanyLogo/DQ_LOGO.png" alt="DQ LOGO" />
+        <img src={logo} alt="DQ LOGO" />
       </div>
       <ul className="sidebar-menu">
         <Link to="/pages">

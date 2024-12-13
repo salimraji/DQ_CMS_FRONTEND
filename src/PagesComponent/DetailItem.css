@@ -148,3 +148,37 @@ button:hover {
     flex-direction: column;
 }
 
+.toolbar{
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar button {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border: 0.5px solid black;
+    min-width: 50px; 
+    height: 30px; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+.tiptap-link{
+    color: black;
+}
+
+.tiptap-link:hover{
+    color: black;
+}
+
+/*This is for the TipTap input styling*/
+.ProseMirror{
+    background-color: white;
+    padding: 3px;
+    border: 1px solid black;
+} 

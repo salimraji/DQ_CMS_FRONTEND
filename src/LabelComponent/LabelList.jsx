@@ -4,6 +4,7 @@ import "./LabelList.css";
 import AddLabelModal from "./AddLabelModal";
 import ConfirmDeleteModal from "../ConfirmDeleteModal";
 import EditLabelModal from "./EditLabelModal";
+import SearchBar from "../components/SearchBar/SearchBar";
 
 function LabelList() {
   const [labels, setLabels] = useState([]);
@@ -24,54 +25,37 @@ function LabelList() {
   });
   const [deleteLabelId, setDeleteLabelId] = useState(null);
   const [searchInput, setSearchInput] = useState("");
-  const [debouncedSearch, setDebouncedSearch] = useState("");
 
   const labelsPerPage = 10;
   const apiUrl = "http://192.168.12.113:3000";
 
   const fetchLabels = (page = 1, search = "") => {
-    const token = localStorage.getItem("token"); 
+    const token = localStorage.getItem("token");
 
     axios
-        .get(`${apiUrl}/api/labels`, {
-            params: { page, limit: labelsPerPage, search },
-            headers: {
-                Authorization: `Bearer ${token}`, 
-            },
-        })
-        .then((response) => {
-            setLabels(response.data.labels); 
-            setTotalLabels(response.data.total);
-        })
-        .catch((error) => {
-            console.error("Error fetching labels:", error);
-            if (error.response?.status === 403) {
-                alert("Your session has expired. Please log in again.");
-            }
-        });
-};
-
-
-  useEffect(() => {
-    fetchLabels(currentPage, debouncedSearch);
-  }, [currentPage, debouncedSearch]);
+      .get(`${apiUrl}/api/labels`, {
+        params: { page, limit: labelsPerPage, search },
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      })
+      .then((response) => {
+        setLabels(response.data.labels);
+        setTotalLabels(response.data.total);
+      })
+      .catch((error) => {
+        console.error("Error fetching labels:", error);
+        if (error.response?.status === 403) {
+          alert("Your session has expired. Please log in again.");
+        }
+      });
+  };
 
   useEffect(() => {
-    const handler = setTimeout(() => {
-      setDebouncedSearch(searchInput);
-    }, 300);
-
-    return () => {
-      clearTimeout(handler);
-    };
-  }, [searchInput]);
+    fetchLabels(currentPage, searchInput);
+  }, [currentPage, searchInput]);
 
   const totalPages = Math.ceil(totalLabels / labelsPerPage);
-
-  const handleSearchChange = (e) => {
-    setSearchInput(e.target.value);
-    setCurrentPage(1);
-  };
 
   const handlePageChange = (page) => {
     setCurrentPage(page);
@@ -84,33 +68,33 @@ function LabelList() {
 
   const handleEditSave = () => {
     if (selectedLabel) {
-      const token = localStorage.getItem(`token`)
+      const token = localStorage.getItem("token");
       axios
         .put(`${apiUrl}/api/labels/${selectedLabel._id}`, selectedLabel, {
           headers: {
-            Authorization: `Bearer ${token}`, 
-        },
+            Authorization: `Bearer ${token}`,
+          },
         })
         .then(() => {
           setModalOpen(false);
-          fetchLabels(currentPage, debouncedSearch);
+          fetchLabels(currentPage, searchInput);
         })
         .catch((error) => console.error("Error saving label:", error));
     }
   };
 
   const handleAddLabel = () => {
-    const token = localStorage.getItem('token')
+    const token = localStorage.getItem("token");
     axios
       .post(`${apiUrl}/api/labels`, newLabel, {
         headers: {
-          Authorization: `Bearer ${token}`, 
-      },
+          Authorization: `Bearer ${token}`,
+        },
       })
       .then(() => {
         setAddModalOpen(false);
-        fetchLabels(currentPage, debouncedSearch);
-        resetNewLabel(); 
+        fetchLabels(currentPage, searchInput);
+        resetNewLabel();
       })
       .catch((error) => console.error("Error adding label:", error));
   };
@@ -143,12 +127,12 @@ function LabelList() {
         >
           + Add Label
         </button>
-        <input
-          type="text"
+        <SearchBar
           placeholder="Search labels..."
-          value={searchInput}
-          onChange={handleSearchChange}
-          className="search-input"
+          onSearch={(value) => {
+            setSearchInput(value);
+            setCurrentPage(1);
+          }}
         />
       </div>
 
@@ -246,7 +230,10 @@ function LabelList() {
         onSave={handleEditSave}
         selectedLabel={selectedLabel}
         onLabelChange={(e) =>
-          setSelectedLabel({ ...selectedLabel, [e.target.name]: e.target.value })
+          setSelectedLabel({
+            ...selectedLabel,
+            [e.target.name]: e.target.value,
+          })
         }
         activeTab={activeTab}
         onTabChange={setActiveTab}
@@ -256,16 +243,16 @@ function LabelList() {
         isOpen={isDeleteModal}
         onClose={() => setDeleteModalOpen(false)}
         onConfirm={() => {
-          const token = localStorage.getItem('token')
+          const token = localStorage.getItem("token");
           axios
-            .delete(`${apiUrl}/api/labels/${deleteLabelId}`,{
+            .delete(`${apiUrl}/api/labels/${deleteLabelId}`, {
               headers: {
-                Authorization: `Bearer ${token}`, 
-            },
+                Authorization: `Bearer ${token}`,
+              },
             })
             .then(() => {
               setDeleteModalOpen(false);
-              fetchLabels(currentPage, debouncedSearch);
+              fetchLabels(currentPage, searchInput);
             })
             .catch((error) => console.error("Error deleting label:", error));
         }}
