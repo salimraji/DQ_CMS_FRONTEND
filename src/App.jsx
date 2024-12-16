@@ -119,7 +119,7 @@ const AppContent = () => {
           <Route
             path="/users"
             element={
-              isAuthenticated && role === "admin" ? (
+              isAuthenticated && role === "Admin" ? (
                 <UserList />
               ) : (
                 <Navigate to="/login" replace />
@@ -129,7 +129,7 @@ const AppContent = () => {
           <Route
             path="/users/add"
             element={
-              isAuthenticated && role === "admin" ? (
+              isAuthenticated && role === "Admin" ? (
                 <AddUser />
               ) : (
                 <Navigate to="/login" replace />
@@ -139,7 +139,7 @@ const AppContent = () => {
           <Route
             path="/users/edit/:userId"
             element={
-              isAuthenticated && role === "admin" ? (
+              isAuthenticated && role === "Admin" ? (
                 <EditUser />
               ) : (
                 <Navigate to="/login" replace />

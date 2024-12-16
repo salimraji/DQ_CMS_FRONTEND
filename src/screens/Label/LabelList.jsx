@@ -7,6 +7,7 @@ import EditLabelModal from "./EditLabelModal";
 import Pagination from "../../components/Pagination/Pagination";
 import EditButton from "../../components/EditButton/EditButton";
 import DeleteButton from "../../components/DeleteButton/DeleteButton";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function LabelList() {
   const [labels, setLabels] = useState([]);
@@ -126,12 +127,10 @@ function LabelList() {
         >
           + Add Label
         </button>
-        <input
-          type="text"
-          placeholder="Search labels..."
+        <SearchBar
           value={searchInput}
-          onChange={handleSearchChange}
-          className="search-input"
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Search labels..."
         />
       </div>
 

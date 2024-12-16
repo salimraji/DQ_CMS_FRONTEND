@@ -3,10 +3,24 @@
     --DQ_Color_Hover: #004e8d;
   }
 
+.rich-text-editor{
+    /* border: 1px solid black; */
+    
+}
+
+
+.ProseMirror{
+    background-color: white;
+    padding: 30px;
+    border: .5px solid black;
+    max-height: 22.5em; 
+    overflow-y: auto; 
+} 
 
 .toolbar{
     display: flex;
     gap: 10px;
+    /* border: 1px solid black; */
 }
 
 .toolbar button {

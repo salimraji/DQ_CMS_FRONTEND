@@ -3,11 +3,10 @@ import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faEdit } from "@fortawesome/free-solid-svg-icons";
 
-
-const EditButton = ({ onClick, className, disabled }) => {
+const EditButton = ({ onClick, className = "", disabled = false }) => {
   return (
     <button
-      className= 'table-action-button'
+      className={`table-action-button ${className}`}
       onClick={onClick}
       disabled={disabled}
       aria-label="Edit"
@@ -21,11 +20,6 @@ EditButton.propTypes = {
   onClick: PropTypes.func.isRequired,
   className: PropTypes.string,
   disabled: PropTypes.bool,
-};
-
-EditButton.defaultProps = {
-  className: "",
-  disabled: false,
 };
 
 export default EditButton;

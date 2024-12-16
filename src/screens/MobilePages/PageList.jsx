@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import Pagination from "../../components/Pagination/Pagination";
 import apiService from "../../Shared/apiService";
 import EditButton from "../../components/EditButton/EditButton";
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function PageList() {
   const [pages, setPages] = useState([]);
@@ -62,12 +63,10 @@ function PageList() {
       {/* Search Bar */}
       <div className="header-controls">
         <p></p>
-        <input
-          type="text"
-          placeholder="Search pages..."
+        <SearchBar
           value={searchInput}
-          onChange={handleSearchChange}
-          className="search-input"
+          onChange={(e) => setSearchInput(e.target.value)}
+          placeholder="Search Pages..."
         />
       </div>
 

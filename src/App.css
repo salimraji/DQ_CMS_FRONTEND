@@ -13,6 +13,17 @@ html, body {
   box-sizing: border-box;
 }
 
+
+.search-input{
+  margin-bottom: 15px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 250px;
+  font-size: 13px;
+  padding: 5px;
+  height: 20px;
+}
+
 input{
   border: .3px solid black;
   margin: 2px;
@@ -42,9 +53,15 @@ h2{
 
 .content {
   justify-content: flex-end;
-  width: 1000px;
-  /* padding-left: 20px; */
+  width: 100%
 }
+
+.with-sidebar{
+  width: 100%;
+  margin: 20px 20px 0 225px
+}
+
+
 input{
   padding-left: 10px;
   font-size: 18px;
@@ -83,15 +100,7 @@ table td{
   padding: 0px 0px 0px 20px;
 }
 
-.search-input{
-  margin-bottom: 15px;
-  padding: 1px 0px 0px 10px;
-  border: 1px solid #ddd;
-  border-radius: 4px;
-  width: 250px;
-  font-size: 13px;
-  height: 30px;
-}
+
 
 th, td {
   padding: 10px;

@@ -1,0 +1,13 @@
+.search-input{
+    margin-bottom: 15px;
+    padding: 1px 0px 0px 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    width: 250px;
+    font-size: 13px;
+    height: 30px;
+    padding: 5px;
+    height: 20px;
+    border: 1px solid #ccc;
+    width: 200px;
+  }

@@ -5,7 +5,8 @@ import apiService from "../../Shared/apiService";
 import "./UserList.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faEdit } from '@fortawesome/free-solid-svg-icons';
-import EditButton from '../../components/EditButton/EditButton'
+import EditButton from '../../components/EditButton/EditButton';
+import SearchBar from "../../components/SearchBar/SearchBar";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -103,12 +104,10 @@ function UserList() {
         <button className="add-button" onClick={handleAddUser}>
           + Add User
         </button>
-        <input
-          type="text"
-          className="search-input"
-          placeholder="Search records"
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
+        <SearchBar
+          value={search} 
+          onChange={(e) => setSearch(e.target.value)} 
+          placeholder="Search users..."
         />
       </div>
 

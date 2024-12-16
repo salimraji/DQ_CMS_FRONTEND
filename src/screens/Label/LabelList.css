@@ -49,12 +49,7 @@
   align-items: center;
 }
 
-.search-input {
-  padding: 5px;
-  height: 20px;
-  border: 1px solid #ccc;
-  width: 200px;
-}
+
 
 .action-column {
   display: flex;

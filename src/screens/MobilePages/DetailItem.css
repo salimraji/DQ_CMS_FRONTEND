@@ -155,10 +155,3 @@ button:hover {
 .tiptap-link:hover{
     color: black;
 }
-
-/*This is for the TipTap input styling*/
-.ProseMirror{
-    background-color: white;
-    padding: 30px;
-    border: .5px solid black;
-} 
