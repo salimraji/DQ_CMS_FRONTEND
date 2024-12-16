@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from "react-router-dom";
-import SideBar from "./SidebarComponent/Sidebar";
-import LabelList from "./LabelComponent/LabelList";
-import Login from "./LoginComponent/Login";
-import AddUser from "./UserComponent/AddUser";
-import EditUser from "./UserComponent/EditUser";
-import UserList from "./UserComponent/UserList";
-import PageList from "./PagesComponent/PageList";
-import PageDetails from "./PagesComponent/PageDetails";
+import SideBar from "./screens/Sidebar/Sidebar";
+import LabelList from "./screens/Label/LabelList";
+import Login from "./screens/Login/Login";
+import AddUser from "./screens/User/AddUser";
+import EditUser from "./screens/User/EditUser";
+import UserList from "./screens/User/UserList";
+import PageList from "./screens/MobilePages/PageList";
+import PageDetails from "./screens/MobilePages/PageDetails"
 
 import "./App.css";
 import { jwtDecode } from "jwt-decode";

@@ -1,4 +1,35 @@
+:root {
+    --DQ_Color: #005FAF;
+    --DQ_Color_Hover: #004e8d;
+  }
+
+
+.toolbar{
+    display: flex;
+    gap: 10px;
+}
+
+.toolbar button {
+    display: flex;
+    align-items: center; 
+    justify-content: center;
+    text-align: center;
+    background-color: white;
+    color: black;
+    border: 0.1px solid black;
+    min-width: 50px; 
+    height: 30px; 
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.toolbar button:hover{
+    background-color: var(--DQ_Color_Hover);
+    color: white;
+}
+
 h4{
     margin: 10px 0px 0px 0px;
     padding: 0px;
 }
+

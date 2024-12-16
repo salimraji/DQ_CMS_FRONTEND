@@ -1,0 +1,164 @@
+:root {
+    --DQ_Color: #005FAF;
+    --DQ_Color_Hover: #004e8d;
+}
+
+.detail-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    background-color: #fff;
+}
+
+.detail-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    cursor: pointer;
+    background-color: #f9f9f9;
+    border-bottom: 1px solid #eee;
+}
+
+.detail-header p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: bold;
+}
+
+.delete-detail {
+    background-color: #bb3a38;
+    color: white;
+    border: none;
+    border-radius: 3px;
+    padding: 5px 10px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+.delete-detail:hover {
+    background-color: #e14e4b;
+}
+
+.children-container {
+    padding: 15px;
+    background-color: #f7f7f7;
+    border-top: 1px solid #eee;
+}
+
+.children {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 10px;
+}
+
+.children input,
+.children textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+
+.children label {
+    display: block;
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 5px;
+}
+
+.child-item {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+}
+
+button {
+    margin-top: 10px;
+    background-color: var(--DQ_Color);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 14px;
+    align-self: center;
+    margin-bottom: 10px;
+}
+
+button:hover {
+    background-color: var(--DQ_Color_Hover);
+}
+
+.children-footer {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.child-item textarea {
+    max-height: 150px; 
+    overflow-y: auto; 
+    resize: vertical; 
+}
+
+.image-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    flex: 1;
+}
+
+.image-container img {
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    max-width: 200px;
+    max-height: 200px;
+    margin-bottom: 10px;
+}
+
+.image-container input[type="file"] {
+    margin-top: 10px;
+}
+
+.image-detail-container {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+    justify-content: space-between;
+}
+
+
+.details-container {
+    flex: 2;
+    display: flex;
+    flex-direction: column; 
+    gap: 15px; 
+    width: 100%;
+}
+
+.details-container .child-item {
+    display: flex;
+    flex-direction: column;
+}
+
+.tiptap-link{
+    color: black;
+}
+
+.tiptap-link:hover{
+    color: black;
+}
+
+/*This is for the TipTap input styling*/
+.ProseMirror{
+    background-color: white;
+    padding: 30px;
+    border: .5px solid black;
+} 
