@@ -3,11 +3,6 @@
     --DQ_Color_Hover: #004e8d;
   }
 
-.rich-text-editor{
-    /* border: 1px solid black; */
-    
-}
-
 
 .ProseMirror{
     background-color: white;
@@ -20,7 +15,7 @@
 .toolbar{
     display: flex;
     gap: 10px;
-    /* border: 1px solid black; */
+    margin-bottom: 10px;
 }
 
 .toolbar button {

@@ -2,11 +2,13 @@ import React from "react";
 import PropTypes from "prop-types";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTrash } from "@fortawesome/free-solid-svg-icons";
+import './DeleteButton.css'
+
 
 const DeleteButton = ({ onClick, className = "", disabled = false }) => {
   return (
     <button
-      className={`table-action-button ${className}`}
+      className={`${className}` || `table-action-button` }
       onClick={onClick}
       disabled={disabled}
       aria-label="Delete"

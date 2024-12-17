@@ -104,7 +104,7 @@ const AppContent = () => {
             path="/login"
             element={
               isAuthenticated ? (
-                <Navigate to="/labels" replace />
+                <Navigate to="/pages" replace />
               ) : (
                 <Login onLogin={handleLogin} />
               )
@@ -149,7 +149,7 @@ const AppContent = () => {
           <Route
             path="*"
             element={
-              <Navigate to={isAuthenticated ? "/labels" : "/login"} replace />
+              <Navigate to={isAuthenticated ? "/pages" : "/login"} replace />
             }
           />
 

@@ -4,6 +4,7 @@ import Pagination from "../../components/Pagination/Pagination";
 import apiService from "../../Shared/apiService";
 import EditButton from "../../components/EditButton/EditButton";
 import SearchBar from "../../components/SearchBar/SearchBar";
+import './PageList.css'
 
 function PageList() {
   const [pages, setPages] = useState([]);
@@ -56,11 +57,12 @@ function PageList() {
     setCurrentPage(page);
   };
 
+  const noOp = () => {}
+
   return (
     <div className="page-list">
       <p className="page-title">Page Listing</p>
 
-      {/* Search Bar */}
       <div className="header-controls">
         <p></p>
         <SearchBar
@@ -70,7 +72,6 @@ function PageList() {
         />
       </div>
 
-      {/* Page Table */}
       {loading ? (
         <p>Loading...</p>
       ) : (
@@ -84,14 +85,16 @@ function PageList() {
           <tbody>
             {pages.map((page) => (
               <tr key={page.Guid}>
-                <td>
-                  {page.Tag} -- {" "}
+               <td>
+                  {page.Tag} --{" "}
                   {page.Details.find((detail) => detail.Key === "Title")?.Value ||
+                  page.Details.find((detail) => detail.Key === "ContentTitle")?.Value ||
                     "Untitled"}
                 </td>
+
                 <td>
                   <Link to={`/pages/${page._id}`}>
-                    <EditButton/>
+                    <EditButton onClick={noOp}/>
                   </Link>
                 </td>
               </tr>
@@ -100,7 +103,6 @@ function PageList() {
         </table>
       )}
 
-      {/* Reusable Pagination Component */}
       <Pagination
         currentPage={currentPage}
         totalPages={totalPages}

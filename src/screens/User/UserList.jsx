@@ -7,6 +7,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faKey, faEdit } from '@fortawesome/free-solid-svg-icons';
 import EditButton from '../../components/EditButton/EditButton';
 import SearchBar from "../../components/SearchBar/SearchBar";
+import ToggleStatusButton from "../../components/ToggleStatusButton/ToggleStatusButton";
 
 function UserList() {
   const [users, setUsers] = useState([]);
@@ -123,7 +124,7 @@ function UserList() {
         </thead>
         <tbody>
           {filteredUsers.map((user) => (
-            <tr key={user.id}>
+            <tr key={user._id}>  
               <td>{user.fullName}</td>
               <td>{user.email}</td>
               <td>{user.role}</td>
@@ -133,12 +134,7 @@ function UserList() {
                   <FontAwesomeIcon icon={faKey} />
                 </button>
                 <EditButton onClick={() => handleEditUser(user._id)} />
-
-                <button
-                  onClick={() => handleToggleUserStatus(user._id, user.active)}
-                >
-                  {user.active ? "Deactivate" : "Activate"}
-                </button>
+                <ToggleStatusButton isActive={user.active} onToggle={() => handleToggleUserStatus(user._id, user.active)}/>
               </td>
             </tr>
           ))}

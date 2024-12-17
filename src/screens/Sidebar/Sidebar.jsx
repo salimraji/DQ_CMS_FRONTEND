@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./Sidebar.css";
 import logo from "../../assets/DQ_LOGO.png";
+import LogoutButton from "../../components/LogoutButton/LogoutButton";
 
 
 function Sidebar({ role }) {
@@ -34,9 +35,7 @@ function Sidebar({ role }) {
           )}
         </div>
 
-        <li className="logout-button" onClick={handleLogout}>
-          Logout
-        </li>
+        <LogoutButton handleLogout={handleLogout}/>
       </ul>
     </div>
   );

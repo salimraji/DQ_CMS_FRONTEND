@@ -59,13 +59,13 @@ function RichTextEditor({ content, onContentChange }) {
                     onClick={() => editor.chain().focus().toggleBold().run()}
                     disabled={!editor?.can().chain().focus().toggleBold().run()}
                 >
-                    B
+                    Bold
                 </button>
                 <button
                     onClick={() => editor.chain().focus().toggleItalic().run()}
                     disabled={!editor?.can().chain().focus().toggleItalic().run()}
                 >
-                    I
+                    Italic
                 </button>
                 <button onClick={handleAddLink}>Link</button>
                 <button

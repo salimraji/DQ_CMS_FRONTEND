@@ -1,5 +1,5 @@
 import React from "react";
-import "./SearchBar.css"; // Optional: Add custom styles if needed
+import "./SearchBar.css";
 
 function SearchBar({ value, onChange, placeholder }) {
   return (

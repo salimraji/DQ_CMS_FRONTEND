@@ -47,7 +47,9 @@ function PageDetails() {
 
     return (
         <div className="page-details-view">
-            <h2>Page Details</h2>
+            <h2>{page.Details.find((detail) => detail.Key === "Title")?.Value || 
+            page.Details.find((detail) => detail.Key === "ContentTitle")?.Value ||
+            "Untitled"}</h2>
             <div className="page-actions">
                 <button className="back-to-pages" onClick={() => navigate('/pages')}>
                     Back

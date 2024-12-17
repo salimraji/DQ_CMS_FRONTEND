@@ -5,8 +5,8 @@
 
 .detail-item {
     border: 1px solid #ddd;
-    margin-bottom: 10px;
-    border-radius: 5px;
+    margin: 10px 10px 0px 0px;
+    border-radius: 15px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
     overflow: hidden;
     background-color: #fff;
@@ -20,6 +20,7 @@
     cursor: pointer;
     background-color: #f9f9f9;
     border-bottom: 1px solid #eee;
+
 }
 
 .detail-header p {
@@ -89,7 +90,7 @@ button {
     cursor: pointer;
     font-size: 14px;
     align-self: center;
-    margin-bottom: 10px;
+    
 }
 
 button:hover {
@@ -154,4 +155,12 @@ button:hover {
 
 .tiptap-link:hover{
     color: black;
+}
+
+
+.main-value-input{
+    padding: 0px 0px 0px 5px;
+    font-size: 15px;
+    font-weight: bold;
+    border: .5px solid rgb(199, 195, 195);
 }

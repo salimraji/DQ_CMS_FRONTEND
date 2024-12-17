@@ -1,7 +1,7 @@
 /* Add Modal */
 .add-user-container {
     max-width: 600px;
-    margin: 50px auto;
+    margin: 0px 0px 0px 20%;
     padding: 20px;
     background: white;
     border-radius: 8px;
@@ -50,3 +50,8 @@
     background-color: #5a6268;
   }
   
+
+  .action-buttons{
+    display: flex;
+    justify-content: space-between;
+  }

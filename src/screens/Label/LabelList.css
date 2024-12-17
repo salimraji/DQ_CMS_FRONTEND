@@ -9,40 +9,6 @@
 }
 
 
-
-.pagination {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  gap: 5px;
-  margin-top: 12px;
-}
-
-.pagination button {
-  padding: 5px 10px;
-  border: 1px solid #ccc;
-  background: #f9f9f9;
-  cursor: pointer;
-  color: black;
-  font-size: 12px;
-}
-
-.pagination button.active {
-  background-color: var(--DQ_Color);
-  color: white;
-  border: 1px solid var(--DQ_Color);
-}
-
-.pagination button:disabled {
-  opacity: 0.5;
-  cursor: not-allowed;
-}
-
-.pagination span {
-  padding: 5px 10px;
-  color: #777;
-}
-
 .label-list .header-controls {
   display: flex;
   justify-content: space-between;

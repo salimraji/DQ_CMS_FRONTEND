@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import './DetailItem.css';
 import RichTextEditor from '../../components/RichTextEditor/RichTextEditor';
+import DeleteButton from '../../components/DeleteButton/DeleteButton';
 
 function DetailItem({ detail, pageId, onDelete }) {
     const [showChildren, setShowChildren] = useState(false);
-    const [formData, setFormData] = useState(() =>
-        detail.Children
-            ? detail.Children.reduce((acc, child) => {
-                acc[child.Key] = child.Value;
-                return acc;
-            }, {})
-            : {}
-    );
+    const [originalValue] = useState(detail.Value);
+    const [formData, setFormData] = useState(() => ({
+        Value: detail.Value, // Include the main detail value for editing
+        ...detail.Children.reduce((acc, child) => {
+            acc[child.Key] = child.Value;
+            return acc;
+        }, {})
+    }));
 
     const handleDeleteDetail = async (detailValue) => {
         try {
@@ -41,7 +42,7 @@ function DetailItem({ detail, pageId, onDelete }) {
                 method: 'PATCH',
                 headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    value: detail.Value,
+                    value: originalValue,
                     updates: { ...formData, PageImage: formData['PageImage'] || detail.Children.find(c => c.Key === 'PageImage')?.Value },
                 }),
             });
@@ -58,7 +59,7 @@ function DetailItem({ detail, pageId, onDelete }) {
     };
 
     const handleInputChange = (key, newValue) => {
-        setFormData((prev) => ({
+        setFormData(prev => ({
             ...prev,
             [key]: newValue,
         }));
@@ -69,7 +70,7 @@ function DetailItem({ detail, pageId, onDelete }) {
         if (file) {
             const reader = new FileReader();
             reader.onload = () => {
-                setFormData((prev) => ({
+                setFormData(prev => ({
                     ...prev,
                     [key]: reader.result,
                 }));
@@ -82,18 +83,25 @@ function DetailItem({ detail, pageId, onDelete }) {
         <div className="detail-item">
             <div className="detail-header" onClick={() => setShowChildren(!showChildren)}>
                 <p>{detail.Value}</p>
-                <button
-                    className="delete-detail"
+                <DeleteButton 
+                    className='delete-button'
                     onClick={(e) => {
                         e.stopPropagation();
                         handleDeleteDetail(detail.Value);
                     }}
-                >
-                    Delete
-                </button>
+                />
             </div>
             {showChildren && detail.Children && detail.Children.length > 0 && (
                 <div className="children-container">
+                    <div className="child-item">
+                        <label>Main Value</label>
+                        <input
+                            type="text"
+                            value={formData.Value}
+                            onChange={(e) => handleInputChange('Value', e.target.value)}
+                            className='main-value-input'
+                        />
+                    </div>
                     {detail.Children.some((child) => child.Key === 'PageImage') ? (
                         <div className="image-detail-container">
                             <div className="image-container">
