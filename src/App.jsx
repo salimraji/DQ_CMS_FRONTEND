@@ -8,6 +8,8 @@ import EditUser from "./screens/User/EditUser";
 import UserList from "./screens/User/UserList";
 import PageList from "./screens/MobilePages/PageList";
 import PageDetails from "./screens/MobilePages/PageDetails"
+import NewsList from "./screens/News/NewsList";
+
 
 import "./App.css";
 import { jwtDecode } from "jwt-decode";
@@ -155,6 +157,14 @@ const AppContent = () => {
 
           <Route path="/pages" element={<PageList />} />
           <Route path="/pages/:id" element={<PageDetails />} />
+
+          <Route
+            path="/news"
+            element = {
+              isAuthenticated && role === "Admin" ? <NewsList /> : <Navigate to="/login" replace />
+            }
+          />
+
         </Routes>
       </div>
     </div>

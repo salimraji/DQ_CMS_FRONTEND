@@ -61,33 +61,25 @@ function UserList() {
     navigate(`/users/add`);
   };
 
-  const handleToggleUserStatus = async (userId, currentStatus) => {
+  const handleToggleUserStatus = async (userId, newStatus) => {
     try {
-      const newStatus = !currentStatus;
-
-      const response = await apiService.patch(`/api/users/${userId}/toggleStatus`);
-      const updatedUser = response.data;
-
-      setUsers((prevUsers) =>
-        prevUsers.map((user) =>
-          user.id === userId ? { ...user, active: updatedUser.active } : user
-        )
-      );
-
-      alert(`User ${newStatus ? "activated" : "deactivated"} successfully.`);
+      const response = await apiService.patch(`/api/users/${userId}/toggleStatus`, { active: newStatus });
+      const updatedUser = response.data.user;
+  
+      setUsers(prevUsers => prevUsers.map(user => 
+        user._id === userId ? { ...user, active: updatedUser.active } : user
+      ));
+  
+      console.log("Updated Users:", updatedUser); 
     } catch (error) {
-      console.error(
-        `Error ${newStatus ? "activating" : "deactivating"} user:`,
-        error
-      );
-      alert(
-        error.message ||
-          `An error occurred while trying to ${
-            newStatus ? "activate" : "deactivate"
-          } the user.`
-      );
+      console.error(`Error ${newStatus ? "activating" : "deactivating"} user:`, error);
+      alert(error.message || `An error occurred while trying to ${newStatus ? "activate" : "deactivate"} the user.`);
     }
   };
+  
+  
+  
+  
 
   if (loading) {
     return <div>Loading users...</div>;

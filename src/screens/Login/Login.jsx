@@ -48,8 +48,7 @@ function Login({ onLogin }) {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
-          </div>
-          <div className="form-group">
+
             <input
               type="password"
               placeholder="Password: "
@@ -57,10 +56,12 @@ function Login({ onLogin }) {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+
+            <button type="submit" className="signin-button">
+              Sign In
+            </button>
           </div>
-          <button type="submit" className="signin-button">
-            Sign In
-          </button>
+          
         </form>
       </div>
     </div>

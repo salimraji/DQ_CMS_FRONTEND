@@ -21,12 +21,13 @@
   
   .edit-user-container input,
   .edit-user-container select {
-    width: 95%;
+    width: 95%; 
     padding: 10px;
     border: 1px solid #ddd;
     border-radius: 4px;
     margin-bottom: 20px;
   }
+  
   
   .edit-user-container button {
     padding: 8px 15px;
@@ -52,5 +53,10 @@
   .edit-actions{
     display: flex;
     justify-content: space-between;
+  }
+  
+
+  input, select {
+    box-sizing: border-box;
   }
   

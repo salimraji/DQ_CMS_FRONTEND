@@ -40,6 +40,8 @@ function LabelList() {
       .then((response) => {
         setLabels(response.data.labels);
         setTotalLabels(response.data.total);
+        console.log(response.data)
+        console.log(response.data.total)
       })
       .catch((error) => {
         console.error("Error fetching labels:", error);
@@ -163,18 +165,20 @@ function LabelList() {
         onPageChange={handlePageChange}
       />
 
-      <AddLabelModal
-        isOpen={isAddModal}
-        onClose={() => {
-          resetNewLabel();
-          setAddModalOpen(false);
-        }}
-        onSubmit={handleAddLabel}
-        newLabel={newLabel}
-        onLabelChange={(e) =>
-          setNewLabel({ ...newLabel, [e.target.name]: e.target.value })
-        }
-      />
+    <AddLabelModal
+      isOpen={isAddModal}
+      onClose={() => {
+        resetNewLabel();
+        setAddModalOpen(false);
+      }}
+      onSubmit={handleAddLabel}
+      newLabel={newLabel}
+      onLabelChange={(e) =>
+        setNewLabel({ ...newLabel, [e.target.name]: e.target.value })
+      }
+      existingLabels={labels} 
+    />
+
 
       <EditLabelModal
         isOpen={isModalOpen}

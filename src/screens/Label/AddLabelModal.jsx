@@ -1,17 +1,21 @@
 import React, { useState } from 'react';
 import './AddLabelModal.css';
 
-function AddLabelModal({ isOpen, onClose, onSubmit, newLabel, onLabelChange }) {
+function AddLabelModal({ isOpen, onClose, onSubmit, newLabel, onLabelChange, existingLabels }) {
   const [errors, setErrors] = useState({});
 
   const handleClose = () => {
     setErrors({});
-    onClose(); 
+    onClose();
   };
 
   const handleSubmit = () => {
     const newErrors = {};
-    if (!newLabel.Tag) newErrors.Tag = 'Key is required';
+    if (!newLabel.Tag) {
+      newErrors.Tag = 'Key is required';
+    } else if (existingLabels.find(label => label.Tag.toLowerCase() === newLabel.Tag.toLowerCase())) {
+      newErrors.Tag = 'Key already exists';
+    }
     if (!newLabel.English) newErrors.English = 'English value is required';
 
     if (Object.keys(newErrors).length > 0) {
@@ -41,7 +45,7 @@ function AddLabelModal({ isOpen, onClose, onSubmit, newLabel, onLabelChange }) {
             {errors.Tag && <span className="error-text">{errors.Tag}</span>}
           </div>
 
-          {['English', 'Arabic', 'French', ].map((lang) => (
+          {['English', 'Arabic', 'French'].map((lang) => (
             <div key={lang}>
               <label>{lang}</label>
               <input

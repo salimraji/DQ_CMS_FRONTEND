@@ -19,7 +19,7 @@ function AddContentModal2({ pageId, closeModal }) {
         if (file) {
             const reader = new FileReader();
             reader.onloadend = () => {
-                setFormData({ ...formData, PageImage: reader.result }); 
+                setFormData({ ...formData, PageImage: reader.result });
             };
             reader.readAsDataURL(file);
         }
@@ -41,7 +41,7 @@ function AddContentModal2({ pageId, closeModal }) {
                 }
             );
             alert('Detail added successfully!');
-            closeModal(); 
+            closeModal();
         } catch (error) {
             console.error('Error adding detail:', error.response?.data || error.message);
             alert('Failed to add detail.');
@@ -53,38 +53,52 @@ function AddContentModal2({ pageId, closeModal }) {
             <div className="modal-content">
                 <h3>Add Detail</h3>
                 <form onSubmit={handleSubmit}>
-                    <label>Image:</label>
-                    <input
-                        type="file"
-                        accept="image/*"
-                        onChange={handleFileChange}
-                    />
-                    <label>Name:</label>
-                    <input
-                        type="text"
-                        name="name"
-                        value={formData.name}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <label>Description:</label>
-                    <textarea
-                        name="description"
-                        value={formData.description}
-                        onChange={handleInputChange}
-                        rows="4"
-                    />
-                    <label>Order:</label>
-                    <input
-                        type="number"
-                        name="order"
-                        value={formData.order}
-                        onChange={handleInputChange}
-                        required
-                    />
-                    <button type="submit">Add Detail</button>
+
+                    <div className='input-group'>
+                        <label>Name:</label>
+                        <input
+                            type="text"
+                            name="name"
+                            value={formData.name}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className='input-group'>
+                        <label>Description:</label>
+                        <textarea
+                            name="description"
+                            value={formData.description}
+                            onChange={handleInputChange}
+                            rows="4"
+                        />
+                    </div>
+                    <div className='input-group'>
+                        <label>Order:</label>
+                        <input
+                            type="number"
+                            name="order"
+                            value={formData.order}
+                            onChange={handleInputChange}
+                            required
+                        />
+                    </div>
+                    <div className='input-group'>
+                        <label>Image:</label>
+                        <input
+                            type="file"
+                            accept="image/*"
+                            onChange={handleFileChange}
+                        />
+                    </div>
+
+                    <div className='modal-actions'>
+                        <button type="submit">Add Detail</button>
+                        <button onClick={closeModal}>Close</button>
+                    </div>
+
                 </form>
-                <button onClick={closeModal}>Close</button>
+                
             </div>
         </div>
     );

@@ -1,22 +1,5 @@
-.modal {
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: rgba(0, 0, 0, 0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 17px;
-  }
-  
-  .modal-content {
-    margin-bottom: 75px;
-    padding: 50px;
-    background: #fff;
-  }
-  
+
+    
   .tabs {
     display: flex;
     gap: 10px;
@@ -62,16 +45,5 @@
     border: 1px solid #ccc;
   }
   
-  .modal-actions {
-    display: flex;
-    justify-content: flex-end;
-    gap: 10px;
-    margin-top: 10px;
-  }
-  
-  .modal-actions button {
-    padding: 5px 10px;
-    background-color: var(--DQ_Color);
-    color: white;
-  }
+
   

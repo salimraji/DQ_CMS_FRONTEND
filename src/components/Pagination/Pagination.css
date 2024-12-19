@@ -1,11 +1,16 @@
+:root {
+    --DQ_Color: #005FAF;
+    --DQ_Color_Hover: #004e8d;
+  }
+
 .pagination {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 5px;
     margin-top: 12px;
-  }
-  
+}
+ 
 .pagination button {
     padding: 5px 10px;
     border: 1px solid #ccc;
@@ -13,6 +18,12 @@
     cursor: pointer;
     color: black;
     font-size: 12px;
+}
+
+
+.pagination button:hover{
+    background-color: var(--DQ_Color_Hover);
+    color: white;
 }
 
 .pagination button.active {

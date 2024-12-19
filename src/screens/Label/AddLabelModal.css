@@ -22,23 +22,8 @@
     border: 1px solid #ccc;
   }
   
-  .modal-actions {
-    display: flex;
-    justify-content: space-between;
-    gap: 10px;
-    margin-top: 20px;
-  }
+
+
   
-  .modal-actions button {
-    padding: 8px 20px;
-    background-color: var(--DQ_Color);
-    color: white;
-    border: none;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .modal-actions button:hover {
-    background-color: var(--DQ_Color);
-  }
+
   
