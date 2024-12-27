@@ -42,8 +42,7 @@ function EditNewsModal({ isOpen, onClose, onSave, selectedNews, onNewsChange, ex
 
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        // Check for duplicate title
+
         const isDuplicate = existingNews.some(newsItem => 
             newsItem.title.toLowerCase() === formData.title.toLowerCase() && newsItem._id !== selectedNews._id
         );

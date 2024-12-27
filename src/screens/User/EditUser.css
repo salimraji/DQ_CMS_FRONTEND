@@ -1,5 +1,15 @@
+.edit-user{
+  /* background-color: red; */
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .edit-user-container {
-    max-width: 600px;
+  width: calc(30%);
+  height: calc(60%);
     margin: 50px auto;
     padding: 20px;
     background: white;

@@ -50,48 +50,66 @@ function EditUser() {
   }
 
   return (
-    <div className="edit-user-container">
+    <div className="edit-user">
+          <div className="edit-user-container">
       <form onSubmit={handleSave}>
+        <div className="input-group">
         <label>
           First Name:
+        </label>
           <input
             type="text"
             value={user.firstName || ""}
             onChange={(e) => handleChange("firstName", e.target.value)}
             required
           />
-        </label>
+        </div>
+        
+        <div className="input-group">
         <label>
           Last Name:
+        </label>
           <input
             type="text"
             value={user.lastName || ""}
             onChange={(e) => handleChange("lastName", e.target.value)}
             required
           />
-        </label>
-        <label>
-          Email:
-          <input
-            type="email"
-            value={user.email || ""}
-            onChange={(e) => handleChange("email", e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Role:
-          <select
-            value={user.role || ""}
-            onChange={(e) => handleChange("role", e.target.value)}
-            required
-          >
-            <option value="">Select Role</option>
-            <option value="Support">Support</option>
-            <option value="Admin">Admin</option>
-            <option value="Superadmin">Super Admin</option>
-          </select>
-        </label>
+        
+        </div>
+
+        <div className="input-group">
+          <label>
+            Email:
+          </label>
+            <input
+              type="email"
+              value={user.email || ""}
+              onChange={(e) => handleChange("email", e.target.value)}
+              required
+            /> 
+        </div>
+
+        <div className="input-group">
+          <label>
+            Role:
+          </label>
+            <select
+              value={user.role || ""}
+              onChange={(e) => handleChange("role", e.target.value)}
+              required
+            >
+              <option value="">Select Role</option>
+              <option value="Support">Support</option>
+              <option value="Admin">Admin</option>
+              <option value="Superadmin">Super Admin</option>
+            </select>
+          
+        </div>
+
+
+
+
         <div className="edit-actions">
           <button type="submit">Save</button>
           <button type="button" onClick={() => navigate("/users")}>
@@ -100,6 +118,8 @@ function EditUser() {
         </div>
       </form>
     </div>
+    </div>
+
   );
 }
 

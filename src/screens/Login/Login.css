@@ -15,7 +15,6 @@ html, body {
     background-color: white;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     color: white;
 
@@ -27,9 +26,8 @@ html, body {
     width: 30vw;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    padding-top: 6%;
     align-items: center;
-    /* border-radius: 25px; */
 }
 
 .form-group{
@@ -39,18 +37,20 @@ html, body {
 }
 
 .dq-logo{
-    width: 85%;
+    margin: 80px 0px 0px 0px;
+    width: 75%;
+    
 }
 
 .cms-title{
-
+    margin: 50px 0px 25px 0px;
     font-size: 25px;
 
 }
 
 .signin-button{
-    width: 100%;
-    height: 46px;
+    width: 85%;
+    height: 6vh;
     border-radius: 7px;
     border: 0px;
     margin-top: 10px;
@@ -69,11 +69,39 @@ html, body {
 .form-group{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 20px;
+    width: 100%;
     margin: 10px 0px 0px 0px;
 }
 
-.form-group input{
-    padding: 8px;
-    width: calc(100% - 30px);
+.login-input-container {
+    position: relative;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+
+.login-input {
+    border-radius: 8px;
+    width: 85%;
+    height: 7vh;
+    padding-left: 10%;
+    border: 0px;
+    font-size: 115%;
+}
+.login-form{
+    width: 100%;
+
+}
+
+.faUser, .faLock {
+    position: absolute;
+    left: 10%;
+    top: 50%;
+    transform: translateY(-50%);
+    color: grey;
+    height: 40%;
 }

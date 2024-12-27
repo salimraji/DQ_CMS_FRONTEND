@@ -1,3 +1,7 @@
+.page-details-view{
+    margin: 25px 35px 0px 25px;
+}
+
 .page-details{
     display: flex;
     flex-direction: column;

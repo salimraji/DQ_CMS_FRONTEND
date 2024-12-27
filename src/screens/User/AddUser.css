@@ -1,7 +1,17 @@
-/* Add Modal */
+.add-user{
+  width: 100%;
+  height: 100%;
+  /* background-color: red; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
 .add-user-container {
-    max-width: 600px;
-    margin: 0px 0px 0px 20%;
+    width: 30%;
+    margin: 0px 0px 0px 0px;
     padding: 20px;
     background: white;
     border-radius: 8px;

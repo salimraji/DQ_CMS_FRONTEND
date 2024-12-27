@@ -20,7 +20,7 @@
     cursor: pointer;
     background-color: #f9f9f9;
     border-bottom: 1px solid #eee;
-
+    height: 8vh;
 }
 
 .detail-header p {
@@ -159,7 +159,7 @@ button:hover {
 
 
 .main-value-input{
-    padding: 0px 0px 0px 5px;
+    padding: 8px;
     font-size: 15px;
     font-weight: bold;
     border: .5px solid rgb(199, 195, 195);

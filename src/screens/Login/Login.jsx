@@ -1,5 +1,9 @@
 import { useState } from "react";
 import "./Login.css";
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faUser, faLock } from '@fortawesome/free-solid-svg-icons';
+
+
 
 function Login({ onLogin }) {
   const [email, setEmail] = useState("");
@@ -39,30 +43,34 @@ function Login({ onLogin }) {
         <img className="dq-logo" src="src\assets\DQ_LOGO.png" alt="Logo" />
         <p className="cms-title">Content Management System</p>
         {error && <p className="error-message">{error}</p>}
-        <form onSubmit={handleSubmit}>
-          <div className="form-group">
-            <input
-              type="text"
-              placeholder="Username: "
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
+        <form onSubmit={handleSubmit} className="login-form">
+  <div className="form-group">
+    <div className="login-input-container">
+      <FontAwesomeIcon icon={faUser} className="faUser" />
+      <input
+          type="text"
+          className="login-input"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
+          required
+      />
+    </div>
 
-            <input
-              type="password"
-              placeholder="Password: "
-              value={password}
-              onChange={(e) => setPassword(e.target.value)}
-              required
-            />
+    <div className="login-input-container">
+      <FontAwesomeIcon icon={faLock} className="faLock" />
+      <input
+          type="password"
+          className="login-input"
+          value={password}
+          onChange={(e) => setPassword(e.target.value)}
+          required
+      />
+    </div>
 
-            <button type="submit" className="signin-button">
-              Sign In
-            </button>
-          </div>
-          
-        </form>
+    <button type="submit" className="signin-button">Sign In</button>
+  </div>
+</form>
+
       </div>
     </div>
   );
