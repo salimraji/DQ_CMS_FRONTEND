@@ -1,8 +1,9 @@
 .add-modal-content {
     padding: 30px;
     background: #fff;
-    width: 400px;
+    width: 25%;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border-radius: 15px;
   }
   
   .add-modal-body {
@@ -17,9 +18,12 @@
   }
   
   .add-modal-body input[type="text"] {
+    margin: 5px 0px 0px 0px;
     width: 100%;
-    padding: 1px;
+    font-size: 20px;
+    padding: 8px;
     border: 1px solid #ccc;
+    border-radius: 10px;
   }
   
 

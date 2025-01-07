@@ -20,7 +20,7 @@ function PageList() {
     setLoading(true);
     apiService
       .get(`/api/pages`, {
-        params: { page, limit: pagesPerPage, search },
+        page, limit: pagesPerPage, search ,
       })
       .then((response) => {
         setPages(response.data.pages);

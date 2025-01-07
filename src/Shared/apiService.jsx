@@ -19,15 +19,20 @@ apiClient.interceptors.request.use(
 apiClient.interceptors.response.use(
   (response) => response,
   (error) => {
-    if (error.response?.status === 403) {
-      alert("Your session has expired. Please log in again.");
+    if (error.response?.status === 401) {
+      localStorage.removeItem("token");  
+      window.location.href = '/login';
+      alert("Session has expired. Please log in again.");
+    } else if (error.response?.status === 403) {
+      alert("You do not have permission to perform this action.");
     }
     return Promise.reject(error);
   }
 );
 
+// Define the API service methods
 const apiService = {
-  get: (url, params) => apiClient.get(url, params),
+  get: (url, params) => apiClient.get(url, { params }),
   post: (url, data) => apiClient.post(url, data),
   put: (url, data) => apiClient.put(url, data),
   patch: (url, data) => apiClient.patch(url, data),

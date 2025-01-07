@@ -35,13 +35,11 @@ function LabelList() {
   const fetchLabels = (page = 1, search = "") => {
     apiService
       .get(`/api/labels`, {
-        params: { page, limit: labelsPerPage, search },
+        page, limit: labelsPerPage, search ,
       })
       .then((response) => {
         setLabels(response.data.labels);
         setTotalLabels(response.data.total);
-        console.log(response.data)
-        console.log(response.data.total)
       })
       .catch((error) => {
         console.error("Error fetching labels:", error);

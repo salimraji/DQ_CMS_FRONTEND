@@ -2,31 +2,38 @@ import React, { useState } from 'react';
 import './DetailItem.css';
 import RichTextEditor from '../../components/RichTextEditor/RichTextEditor';
 import DeleteButton from '../../components/DeleteButton/DeleteButton';
+import ConfirmDeleteModal from '../../ConfirmDeleteModal'
+
+
+const api_url = "http://192.168.12.113:3000"
+
 
 function DetailItem({ detail, pageId, onDelete }) {
     const [showChildren, setShowChildren] = useState(false);
     const [originalValue] = useState(detail.Value);
     const [formData, setFormData] = useState(() => ({
-        Value: detail.Value, // Include the main detail value for editing
+        Value: detail.Value, 
         ...detail.Children.reduce((acc, child) => {
             acc[child.Key] = child.Value;
             return acc;
         }, {})
     }));
+    const [isModalOpen, setModalOpen] = useState(false); 
 
-    const handleDeleteDetail = async (detailValue) => {
+    const handleDeleteDetail = async () => {
         try {
             const token = localStorage.getItem('token');
             const response = await fetch(`http://192.168.12.113:3000/api/pages/${pageId}/details`, {
                 method: 'DELETE',
                 headers: { Authorization: `Bearer ${token}`, 'Content-Type': 'application/json' },
-                body: JSON.stringify({ value: detailValue }),
+                body: JSON.stringify({ value: originalValue }),
             });
 
             if (response.ok) {
                 const result = await response.json();
                 console.log('Detail deleted:', result);
                 if (onDelete) onDelete(detail.Value);
+                setModalOpen(false);
             } else {
                 console.error('Failed to delete detail');
             }
@@ -35,7 +42,7 @@ function DetailItem({ detail, pageId, onDelete }) {
         }
     };
 
-    const handleSaveDetail = async () => {
+    const handleSaveDetail = async () => { 
         try {
             const token = localStorage.getItem('token');
             const response = await fetch(`http://192.168.12.113:3000/api/pages/${pageId}/details`, {
@@ -58,14 +65,14 @@ function DetailItem({ detail, pageId, onDelete }) {
         }
     };
 
-    const handleInputChange = (key, newValue) => {
+    const handleInputChange = (key, newValue) => { 
         setFormData(prev => ({
             ...prev,
             [key]: newValue,
         }));
     };
 
-    const handleImageChange = (e, key) => {
+    const handleImageChange = (e, key) => { 
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
@@ -79,6 +86,9 @@ function DetailItem({ detail, pageId, onDelete }) {
         }
     };
 
+    const openDeleteModal = () => setModalOpen(true); 
+    const closeDeleteModal = () => setModalOpen(false); 
+
     return (
         <div className="detail-item">
             <div className="detail-header" onClick={() => setShowChildren(!showChildren)}>
@@ -87,7 +97,7 @@ function DetailItem({ detail, pageId, onDelete }) {
                     className='delete-button'
                     onClick={(e) => {
                         e.stopPropagation();
-                        handleDeleteDetail(detail.Value);
+                        openDeleteModal(); 
                     }}
                 />
             </div>
@@ -107,7 +117,7 @@ function DetailItem({ detail, pageId, onDelete }) {
                             <div className="image-container">
                                 {formData['PageImage'] ? (
                                     <img
-                                        src={formData['PageImage']}
+                                    src={formData['PageImage'].startsWith('data:image') ? formData['PageImage'] : `${api_url}${formData['PageImage']}`}
                                         alt="Page"
                                         style={{ maxWidth: '200px', maxHeight: '200px', marginBottom: '10px' }}
                                     />
@@ -180,6 +190,11 @@ function DetailItem({ detail, pageId, onDelete }) {
                     </div>
                 </div>
             )}
+            <ConfirmDeleteModal
+                isOpen={isModalOpen}
+                onClose={closeDeleteModal}
+                onConfirm={handleDeleteDetail}
+            />
         </div>
     );
 }
