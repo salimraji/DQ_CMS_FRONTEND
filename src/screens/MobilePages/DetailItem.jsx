@@ -8,7 +8,7 @@ import ConfirmDeleteModal from '../../ConfirmDeleteModal'
 const api_url = "http://192.168.12.113:3000"
 
 
-function DetailItem({ detail, pageId, onDelete }) {
+function DetailItem({ page, detail, pageId, onDelete }) {
     const [showChildren, setShowChildren] = useState(false);
     const [originalValue] = useState(detail.Value);
     const [formData, setFormData] = useState(() => ({
@@ -93,13 +93,15 @@ function DetailItem({ detail, pageId, onDelete }) {
         <div className="detail-item">
             <div className="detail-header" onClick={() => setShowChildren(!showChildren)}>
                 <p>{detail.Value}</p>
-                <DeleteButton 
-                    className='delete-button'
-                    onClick={(e) => {
-                        e.stopPropagation();
-                        openDeleteModal(); 
-                    }}
-                />
+                {page.Tag !== 'ABOUTUS' && (
+                    <DeleteButton 
+                        className='delete-button'
+                        onClick={(e) => {
+                            e.stopPropagation();
+                            openDeleteModal(); 
+                        }}
+                    />
+                )}
             </div>
             {showChildren && detail.Children && detail.Children.length > 0 && (
                 <div className="children-container">

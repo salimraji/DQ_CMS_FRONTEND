@@ -5,6 +5,11 @@ import './EditNewsModal.css';
 
 
 function EditNewsModal({ isOpen, onClose, onSave, selectedNews, onNewsChange, existingNews }) {
+
+    const api_url = "http://192.168.12.113:3000"
+
+
+
     const [error, setError] = useState("");
     const [formData, setFormData] = useState({
         title: '',
@@ -95,7 +100,14 @@ function EditNewsModal({ isOpen, onClose, onSave, selectedNews, onNewsChange, ex
                             accept="image/*"
                             onChange={handleFileChange}
                         />
-                        {formData.image && <img src={formData.image} alt="Preview" height="170px" width="170px" />}
+                        {formData.image && (
+                            <img
+                                src={formData.image.startsWith('data:image') ? formData.image : `${api_url}${formData.image}`}
+                                alt="Preview"
+                                height="170px"
+                                width="170px"
+                            />
+                        )}
                     </div>
                     <div className='modal-actions'>
                         <button type="submit">Update</button>

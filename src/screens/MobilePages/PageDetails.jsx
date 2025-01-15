@@ -61,7 +61,7 @@ function PageDetails() {
 
             <div className="page-details">
                 {page.Details.map((detail, index) => (
-                    <DetailItem key={index} detail={detail} pageId={page._id} />
+                    <DetailItem page = {page} key={index} detail={detail} pageId={page._id} />
                 ))}
             </div>
 
